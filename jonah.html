@@ -7,8 +7,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Wavefont:wght@300&display=swap" rel="stylesheet">
 	<style type="text/css">
+
+		#Main_Page{
+			width:210px;
+			height:75px;
+			background-color:turquoise;
+			font-family:comfortaa;
+			text-align:center;
+			color:pink;
+			font-size:50px;
+			transition:3s;
+		}
+
+		#Main_Page:hover{
+			background-color:black;
+			color:yellow;
+			transition:6s;
+			transform: rotate(1080deg);
+
+		}
+
 		#jonah{
-			width:200px;
+			width:210px;
 			height:75px;
 			background-color:red;
 			font-family:courier;
@@ -28,7 +48,7 @@
 
 
 		#jonahjournal{
-			width:200px;
+			width:210px;
 			height:75px;
 			background-color:magenta;
 			font-family:timesnewroman;
@@ -47,28 +67,8 @@
 		}
 
 
-		#Main_Page{
-			width:200px;
-			height:75px;
-			background-color:turquoise;
-			font-family:comfortaa;
-			text-align:center;
-			color:pink;
-			font-size:50px;
-			transition:3s;
-		}
-
-		#Main_Page:hover{
-			background-color:black;
-			color:yellow;
-			transition:6s;
-			transform: rotate(1080deg);
-
-		}
-
-
 		#something{
-			width:200px;
+			width:210px;
 			height:75px;
 			background-color:orange;
 			font-family: 'Wavefont', cursive;
@@ -91,7 +91,7 @@
 		}
 
 		a{
-			text-decoration: none;
+			text-decoration:underline;
 		}
 	</style>
 </head>
@@ -99,6 +99,13 @@
 
 
 <body>
+
+<a href="index.html">
+	<div id="Main_Page">
+	main page
+		</div>
+
+</a>
 
 <a href="jonah2.html">
 	<div id="jonah">
@@ -112,14 +119,6 @@
 	<div id="jonahjournal">
 	journal
 	</div>
-
-</a>
-
-
-<a href="index.html">
-	<div id="Main_Page">
-	main page
-		</div>
 
 </a>
 
