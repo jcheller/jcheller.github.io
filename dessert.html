@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<audio id="sound1" src="eating.mp3"></audio>
+<script type="text/javascript">
+	
+function makeBar (){
+	var bar = document.createElement("div");
+	document.body.appendChild(bar);
+
+		bar.style.width="200px";
+		bar.style.height="200px";
+		bar.style.backgroundSize="contain";
+		bar.style.backgroundImage="url(https://www.thecountrycook.net/wp-content/uploads/2021/03/thumbnail-Grandmas-No-Bake-Peanut-Butter-Squares-scaled.jpg)"
+		bar.style.display="inline-block";
+
+		bar.addEventListener("mouseenter", function(){
+			bar.style.opacity="0"
+			sound1.play()
+		})
+
+	
+
+
+}
+
+document.addEventListener("click", (makeBar))
+
+
+</script>
+
+</body>
+</html>
