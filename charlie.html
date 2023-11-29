@@ -6,9 +6,34 @@
 #title{
 	font-size: 100px;
 	position: absolute;
-	top: -70px;
-	left: 18%;
-}
+	top: -100px;
+	left: 28%;
+	}
+
+	#message{
+		font-size:30px;
+		position: absolute;
+		top: 170px;
+		left: 37%;
+	}
+
+	#click{
+		font-size: 20px;
+		position: absolute;
+		top: 410px;
+		left: 680px;
+	}
+
+	.charlies{
+
+		width:200px;
+		height:200px;
+		background-repeat:no-repeat;
+		background-size:contain;
+		background-position: center;
+		opacity:0;
+
+		}
 body{
 
 		background-image:url(christmas.jpg); 
@@ -16,12 +41,178 @@ body{
   			background-size:cover;
 
   			}
+
+  #charlie1{
+  	background-image:url(charlie1.jpg);
+  	position: absolute;
+  	top: 20px;
+  	left: 5%;
+  }
+
+    #charlie2{
+  	background-image:url(charlie2.jpg);
+  	position: absolute;
+  	top: 250px;
+  	left: 13%;
+  }
+
+    #charlie3{
+  	background-image:url(charlie3.jpg);
+  	position: absolute;
+  	top: 450px;
+  	left: 8%;
+  }
+
+
+    #charlie4{
+  	background-image:url(charlie4.jpg);
+  }
+
+#charlie4{
+  	background-image:url(charlie4.jpg);
+  	position: absolute;
+  	top: 460px;
+  	left: 25%;
+  }
+
+  #charlie5{
+  	background-image:url(charlie5.jpg);
+  	position: absolute;
+  	top: 460px;
+  	left: 50%;
+  }
+
+  #charlie6{
+  	background-image:url(charlie6.jpg);
+  	position: absolute;
+  	top: 250px;
+  	left: 30%;
+  }
+
+  #charlie7{
+  	background-image:url(charlie7.jpg);
+  	position: absolute;
+  	top: 350px;
+  	left: 67%;
+  }
+
+  #charlie8{
+  	background-image:url(charlie8.jpg);
+  	position: absolute;
+  	top: 230px;
+  	left: 53%;
+  }
+
+  #charlie9{
+  	background-image:url(charlie9.jpg);
+  	position: absolute;
+  	top: 120px;
+  	left: 73%;
+  }
+
+  #charlie10{
+  	background-image:url(charlie10.jpg);
+  	position: absolute;
+  	top: 480px;
+  	left: 81.5%;
+  	
+  }
+
+  #charlie11{
+  	background-image:url(charlie11.jpg);
+  	position: absolute;
+  	top: 230px;
+  	left: 85%;
+  }
 	</style>
 </head>
 <body>
-<center><p id="title">MERRY CHRISTMAS</p></center>
-<div id="message">
-	to celebrate the birth of jesus christ here are some silly photos of you because your my best friend :)
-			</div>
+	
+
+<center><p id="title">merry christmas</p></center>
+<center><div id="message">
+	here are some silly photos of you
+			</div></center>
+	<center><div id="click">
+	   click
+			</div></center>
+
+	<div class="charlies" id="charlie1"></div>
+	<div class="charlies" id="charlie2"></div>
+	<div class="charlies" id="charlie3"></div>
+	<div class="charlies" id="charlie4"></div>
+	<div class="charlies" id="charlie5"></div>
+	<div class="charlies" id="charlie6"></div>
+	<div class="charlies" id="charlie7"></div>
+	<div class="charlies" id="charlie8"></div>
+	<div class="charlies" id="charlie9"></div>
+	<div class="charlies" id="charlie10"></div>
+	<div class="charlies" id="charlie11"></div>
+
+	<script type="text/javascript">
+
+		var counter = 0;
+
+		click.addEventListener("click", function (){
+			console.log("what?")
+
+		counter =counter+1;
+
+		if(counter==1){
+			charlie1.style.opacity = "1"
+		}
+
+		if(counter==2){
+			charlie2.style.opacity = "1"
+		}
+
+		if(counter==3){
+			charlie3.style.opacity = "1"
+			
+		}
+
+		if(counter==4){
+			charlie4.style.opacity = "1"
+			
+		}
+
+		if(counter==5){
+			charlie5.style.opacity = "1"}
+
+		if(counter==6){
+			charlie6.style.opacity = "1"
+		
+		}
+
+		if(counter==7){
+			charlie7.style.opacity = "1"
+			
+		}
+
+		if(counter==8){
+			charlie8.style.opacity = "1"
+			
+		}
+
+		if(counter==9){
+			charlie9.style.opacity = "1"
+		}
+
+		if(counter==10){
+			charlie10.style.opacity = "1"
+			
+		}
+
+		if(counter==11){
+			charlie11.style.opacity = "1"
+			
+			}
+
+		})
+
+
+
+	</script>
+
 </body>
 </html>
