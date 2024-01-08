@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css">
+		
+		#cheeseboard{
+			width:1000px;
+			height:1000px;
+			background-image:url(cuttingboard.png);
+			background-size:contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			}
+			
+		.topping{
+			width:100px;
+			height:100px;
+			border:1px solid black;
+			display:inline-block;
+			margin:5px;
+			background-size:contain;
+		background-position:center;
+			background-repeat: no-repeat;
+
+		}
+		#one{
+			background-image:url(bluecheese.png);}
+
+		#two{
+			background-image:url(pecorinoCheese.png);}
+
+		#three{
+			background-image:url(figJam.png);}
+		#four{
+			background-image:url(crackers.png);}
+
+		#five{
+			background-image:url(cashews.png);}
+
+		#six{
+			background-image:url(olives.png);}
+	</style>
+</head>
+<body>
+
+	<div id="one" class="topping"></div>
+	<div id="two" class="topping"></div>
+	<div id="three" class="topping"></div>
+	<div id="four"class="topping"></div>
+	<div id="five" class="topping"></div>
+	<div id="six" class="topping"></div>
+
+	<div id="cheeseboard"></div>
+
+
+
+<script type="text/javascript">
+var feature;
+
+//these three event listeners are for the toppings at the top to set the background image//
+	
+	one.addEventListener("click", function(){
+		feature = "bluecheese.png"
+		console.log(feature)
+	})
+		two.addEventListener("click", function(){
+		feature = "pecorinoCheese.png"
+				console.log(feature)
+	})
+			three.addEventListener("click", function(){
+		feature = "figJam.png"
+			console.log(feature)
+})
+			four.addEventListener("click", function(){
+		feature = "crackers.png"
+			console.log(feature)
+})
+			five.addEventListener("click", function(){
+		feature = "cashews.png"
+			console.log(feature)
+})
+			six.addEventListener("click", function(){
+		feature = "olives.png"
+			console.log(feature)
+})
+
+			//this is the event listener for the big div and it makes divs inside that div every time we click//
+
+	cheeseboard.addEventListener("click", 
+
+		function makeDiv (event){
+		var food = document.createElement('div');
+		document.body.appendChild(food)
+		food.classList.add('topping')
+		food.style.position = "absolute"
+		food.style.left = event.clientX-50 +"px"
+		food.style.top = event.clientY-50 +"px"
+		food.style.border = "0px"
+		food.style.backgroundImage = "url("+ feature	+")"
+	})
+
+
+</script>
+
+
+</body>
+</html>

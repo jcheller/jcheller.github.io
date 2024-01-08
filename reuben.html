@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css">
+		
+		#backdrop{
+			width:1600px;
+			height:1200px;
+			background-color: black;
+			position: absolute;
+			top: 0px;
+			left: 0%;
+			}
+			
+		.reuben{
+			width:200px;
+			height:200px;
+			position: absolute;
+			top: 70px;
+			left: 100%;
+			opacity: 0;
+			display: inline-block;
+			background-size:contain;
+			background-position:center;
+			background-repeat: no-repeat;
+
+		}
+
+		#one{
+			background-image:url(reuben1.png);}
+
+		#two{
+			background-image:url(reuben2.png);}
+
+		#three{
+			background-image:url(reuben3.png);}
+		#four{
+			background-image:url(reuben4.png);}
+
+	</style>
+</head>
+<body>
+<center><h1>happy new year reuben</h1></center>
+	<div id="one" class="reuben"></div>
+	<div id="two" class="reuben"></div>
+	<div id="three" class="reuben"></div>
+	<div id="four"class="reuben"></div>
+	
+	<div id="backdrop"></div>
+
+
+
+<script type="text/javascript">
+
+		var counter = 0;
+
+		backdrop.addEventListener("click", function (){
+			console.log("what?")
+
+		counter =counter+1;
+
+		if(counter==1){
+			feature = "reuben1.png"
+		}
+
+		if(counter==2){
+			feature = "reuben2.png"
+		}
+
+		if(counter==3){
+			feature = "reuben3.png"
+		}
+
+		if(counter==4){
+			counter =counter-5;
+			feature = "reuben4.png"
+
+		}
+
+		})
+
+	backdrop.addEventListener("click", 
+
+		function makeDiv (event){
+		var reuben = document.createElement('div');
+		document.body.appendChild(reuben)
+		reuben.classList.add('reuben')
+		reuben.style.position = "absolute"
+		reuben.style.left = event.clientX-50 +"px"
+		reuben.style.top = event.clientY-50 +"px"
+		reuben.style.border = "0px"
+		reuben.style.opacity = 1
+		reuben.style.backgroundImage = "url("+ feature	+")"
+	})
+
+
+</script>
+
+
+</body>
+</html>
