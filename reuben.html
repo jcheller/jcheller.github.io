@@ -4,10 +4,14 @@
 	<title></title>
 
 	<style type="text/css">
-		
+
 		#backdrop{
-			width:1600px;
+			width:1440px;
 			height:1200px;
+			font-family:courier;
+			text-align:center;
+			color:white;
+			font-size:25px;
 			background-color: black;
 			position: absolute;
 			top: 0px;
@@ -19,7 +23,7 @@
 			height:200px;
 			position: absolute;
 			top: 70px;
-			left: 100%;
+			left: 0%;
 			opacity: 0;
 			display: inline-block;
 			background-size:contain;
@@ -46,8 +50,7 @@
 	<div id="two" class="reuben"></div>
 	<div id="three" class="reuben"></div>
 	<div id="four"class="reuben"></div>
-	<div id="title"></div>
-	<div id="backdrop"></div>
+	<div id="backdrop">click around on the screen</div>
 
 
 
@@ -87,8 +90,8 @@
 		document.body.appendChild(reuben)
 		reuben.classList.add('reuben')
 		reuben.style.position = "absolute"
-		reuben.style.left = event.clientX-50 +"px"
-		reuben.style.top = event.clientY-50 +"px"
+		reuben.style.left = event.clientX-100 +"px"
+		reuben.style.top = event.clientY-100 +"px"
 		reuben.style.border = "0px"
 		reuben.style.opacity = 1
 		reuben.style.backgroundImage = "url("+ feature	+")"
