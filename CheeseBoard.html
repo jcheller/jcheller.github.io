@@ -12,8 +12,26 @@
 			background-size:contain;
 			background-position: center;
 			background-repeat: no-repeat;
+			position: absolute;
+			top: -130px;
+			left: 0%;
+			z-index: -2
 			}
-			
+
+			#back{
+			width:20px;
+			height:20px;
+			font-family:courier;
+			text-align:center;
+			color:black;
+			font-size:25px;
+			background-color: white;
+			position: absolute;
+			top: 40px;
+			left: 95%;
+			z-index: 5;
+			}
+
 		.topping{
 			width:100px;
 			height:100px;
@@ -23,24 +41,31 @@
 			background-size:contain;
 		background-position:center;
 			background-repeat: no-repeat;
-
+			z-index: 3
 		}
+
 		#one{
-			background-image:url(bluecheese.png);}
+			background-image:url(bluecheese.png);
+		z-index: 3}
 
 		#two{
-			background-image:url(pecorinoCheese.png);}
+			background-image:url(pecorinoCheese.png);
+		z-index: 3}
 
 		#three{
-			background-image:url(figJam.png);}
+			background-image:url(figJam.png);
+		z-index: 3}
 		#four{
-			background-image:url(crackers.png);}
+			background-image:url(crackers.png);
+		z-index: 3}
 
 		#five{
-			background-image:url(cashews.png);}
+			background-image:url(cashews.png);
+		z-index: 3}
 
 		#six{
-			background-image:url(olives.png);}
+			background-image:url(olives.png);
+		z-index: 3}
 	</style>
 </head>
 <body>
@@ -51,15 +76,11 @@
 	<div id="four"class="topping"></div>
 	<div id="five" class="topping"></div>
 	<div id="six" class="topping"></div>
-
 	<div id="cheeseboard"></div>
-
-
+	<a href="projects.html"><div id="back">back</div></a>
 
 <script type="text/javascript">
 var feature;
-
-//these three event listeners are for the toppings at the top to set the background image//
 	
 	one.addEventListener("click", function(){
 		feature = "bluecheese.png"
@@ -86,8 +107,6 @@ var feature;
 			console.log(feature)
 })
 
-			//this is the event listener for the big div and it makes divs inside that div every time we click//
-
 	cheeseboard.addEventListener("click", 
 
 		function makeDiv (event){
@@ -100,7 +119,6 @@ var feature;
 		food.style.border = "0px"
 		food.style.backgroundImage = "url("+ feature	+")"
 	})
-
 
 </script>
 

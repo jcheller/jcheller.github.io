@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	
+	#backdrop{
+			width:1440px;
+			height:900px;
+			font-family:courier;
+			text-align:center;
+			color:white;
+			font-size:25px;
+			background-color: black;
+			position: absolute;
+			top: 0px;
+			left: 0%;
+			z-index: -2;
+			}
+
+	#back{
+			width:10px;
+			height:20px;
+			font-family:courier;
+			text-align:center;
+			color:white;
+			font-size:20px;
+			background-color: black;
+			position: absolute;
+			top: 15px;
+			left: 95%;
+			z-index: 5;
+			}
+
+	#instructions{
+			width:200px;
+			height:20px;
+			font-family:courier;
+			text-align:center;
+			color:white;
+			font-size:15px;
+			background-color: black;
+			position: absolute;
+			top: 15px;
+			left: 75%;
+			z-index: 5;
+			}
+
+			.pixel{
+			width:40px;
+			height:40px;
+			display:inline-block;
+			margin:5px;
+			z-index: 5;
+			}
+
+			#little{
+			width:10px;
+			height:10px;
+			border:1px solid black;
+			display:inline-block;
+			background-color: white;
+			margin:5px;
+			z-index: 5;
+			}
+
+			#regular{
+			width:15px;
+			height:15px;
+			border:1px solid black;
+			display:inline-block;
+			background-color: white;
+			margin:5px;
+			z-index: 5;
+			}
+
+			#medium{
+			width:23px;
+			height:23px;
+			border:1px solid black;
+			background-color: white;
+			display:inline-block;
+			margin:5px;
+			z-index: 5;
+			}
+
+			#big{
+			width:32px;
+			height:32px;
+			border:1px solid black;			
+			background-color: white;
+			display:inline-block;
+			margin:5px;
+			z-index: 5;
+			}
+
+			#bigger{
+			width:40px;
+			height:40px;
+			border:1px solid black;
+			background-color: white;
+			display:inline-block;
+			margin:5px;
+			z-index: 5;
+			}
+
+			#one{
+			background-color: red
+		}
+		#two{
+			background-color: orange
+}
+		#three{
+			background-color: yellow
+}
+		#four{
+			background-color: green
+}
+		#five{
+			background-color: cyan
+}
+		#six{
+			background-color: blue
+}
+		#seven{
+			background-color: purple
+}
+		#eight{
+			background-color: magenta
+}
+		#nine{
+			background-color: pink
+}
+		#ten{
+			background-color: white;
+			border:1px solid black;
+}
+#eleven{
+			background-color: gray
+		}
+
+#twleve{
+			background-color: darkgray
+}
+#thirteen{
+			background-color: black;
+			border:1px solid white;
+}
+	
+</style>
+</head>
+<body>
+
+	<div id="backdrop"></div>
+	<div id="one" class="pixel"></div>
+	<div id="two" class="pixel"></div>
+	<div id="three" class="pixel"></div>
+	<div id="four"class="pixel"></div>
+	<div id="five" class="pixel"></div>
+	<div id="six" class="pixel"></div>
+	<div id="seven" class="pixel"></div>
+	<div id="eight" class="pixel"></div>
+	<div id="nine" class="pixel"></div>
+	<div id="ten" class="pixel"></div>
+	<div id="eleven" class="pixel"></div>
+	<div id="twleve" class="pixel"></div>
+	<div id="thirteen" class="pixel"></div>
+	<div id="little"></div>
+	<div id="regular"></div>
+	<div id="medium" ></div>
+	<div id="big" ></div>
+	<div id="bigger"></div>
+	<div id="instructions">click a color and size block to select and change color and size. click the screen to draw by hovering and click again to stop the drawing</div></a>
+	<a href="projects.html"><div id="back">back</div></a>
+
+
+<script type="text/javascript">
+
+var feature;
+	one.addEventListener("click", function(){
+		feature = "red"
+		console.log(feature)
+	})
+		two.addEventListener("click", function(){
+		feature = "orange"
+				console.log(feature)
+	})
+			three.addEventListener("click", function(){
+		feature = "yellow"
+			console.log(feature)
+})
+			four.addEventListener("click", function(){
+		feature = "green"
+			console.log(feature)
+})
+			five.addEventListener("click", function(){
+		feature = "cyan"
+			console.log(feature)
+})
+			six.addEventListener("click", function(){
+		feature = "blue"
+			console.log(feature)
+})
+ seven.addEventListener("click", function(){
+		feature = "purple"
+			console.log(feature)
+})
+eight.addEventListener("click", function(){
+		feature = "magenta"
+			console.log(feature)
+})
+nine.addEventListener("click", function(){
+		feature = "pink"
+			console.log(feature)
+})
+ten.addEventListener("click", function(){
+		feature = "white"
+			console.log(feature)
+})
+eleven.addEventListener("click", function(){
+		feature = "gray"
+			console.log(feature)
+})
+twleve.addEventListener("click", function(){
+		feature = "darkgray"
+			console.log(feature)
+})
+
+thirteen.addEventListener("click", function(){
+		feature = "black"
+			console.log(feature)
+})
+
+var size=10;
+
+little.addEventListener("click", function(){
+		size = "5"
+			console.log(size)
+})
+
+regular.addEventListener("click", function(){
+		size = "10"
+			console.log(size)
+})
+
+medium.addEventListener("click", function(){
+		size = "20"
+			console.log(size)
+})
+big.addEventListener("click", function(){
+		size = "35"
+			console.log(size)
+})
+bigger.addEventListener("click", function(){
+		size = "50"
+			console.log(size)
+})
+	var counter = 0;
+
+function makeDiv (event){
+		var pixel = document.createElement('div');
+		document.body.appendChild(pixel)
+		pixel.classList.add('pixel')
+		pixel.style.position = "absolute"
+		pixel.style.backgroundColor = feature
+		pixel.style.left = event.clientX-5 +"px"
+		pixel.style.top = event.clientY-5 +"px"
+		pixel.style.width = size +"px"
+		pixel.style.height = size +'px'
+
+		function removeClass (){
+			pixel.classList.remove("pixel");
+
+		}
+setTimeout(removeClass, 50)
+	}
+
+document.addEventListener("click", function (){
+
+	counter =counter+1;
+	if (counter%2 == 1) {
+
+		backdrop.addEventListener("mousemove", makeDiv)
+	}
+
+	if (counter%2 == 0) {
+		backdrop.removeEventListener("mousemove", makeDiv)
+	}
+})
+
+one.addEventListener("click", function (){
+	counter =1
+})
+two.addEventListener("click", function (){
+	counter =1
+})
+three.addEventListener("click", function (){
+	counter =1
+})
+four.addEventListener("click", function (){
+	counter =1
+})
+five.addEventListener("click", function (){
+	counter =1
+})
+six.addEventListener("click", function (){
+	counter =1
+})
+seven.addEventListener("click", function (){
+	counter =1
+})
+eight.addEventListener("click", function (){
+	counter =1
+})
+nine.addEventListener("click", function (){
+	counter =1
+})
+ten.addEventListener("click", function (){
+	counter =1
+})
+eleven.addEventListener("click", function (){
+	counter =1
+})
+twleve.addEventListener("click", function (){
+	counter =1
+})
+thirteen.addEventListener("click", function (){
+	counter =1
+})
+
+little.addEventListener("click", function (){
+	counter =1
+})
+regular.addEventListener("click", function (){
+	counter =1
+})
+medium.addEventListener("click", function (){
+	counter =1
+})
+big.addEventListener("click", function (){
+	counter =1
+})
+bigger.addEventListener("click", function (){
+	counter =1
+})
+</script>
+
+
+</body>
+</html>

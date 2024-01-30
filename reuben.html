@@ -16,6 +16,22 @@
 			position: absolute;
 			top: 0px;
 			left: 0%;
+			z-index: 2;
+
+			}
+
+		#back{
+			width:20px;
+			height:20px;
+			font-family:courier;
+			text-align:center;
+			color:white;
+			font-size:25px;
+			background-color: black;
+			position: absolute;
+			top: 0px;
+			left: 0%;
+			z-index: 5;
 			}
 
 		.reuben{
@@ -29,6 +45,8 @@
 			background-size:contain;
 			background-position:center;
 			background-repeat: no-repeat;
+			z-index: 3;
+
 
 		}
 
@@ -46,13 +64,19 @@
 	</style>
 </head>
 <body>
+	<a href="projects.html">
+		<div id="back">
+		back
+	</div>
+</a>
 	<div id="one" class="reuben"></div>
 	<div id="two" class="reuben"></div>
 	<div id="three" class="reuben"></div>
 	<div id="four"class="reuben"></div>
-	<div id="backdrop">click around on the screen</div>
 
-
+	<div id="backdrop">
+	click around on the screen
+</div>
 
 <script type="text/javascript">
 
