@@ -1,7 +1,10 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
 	<title></title>
+
 <style type="text/css">
 	
 	#backdrop{
@@ -9,7 +12,7 @@
 			height:900px;
 			font-family:courier;
 			text-align:center;
-			color:white;
+			csolor:white;
 			font-size:25px;
 			background-color: black;
 			position: absolute;
@@ -61,7 +64,8 @@
 			display:inline-block;
 			background-color: white;
 			margin:5px;
-			z-index: 5;
+			z-index: 5;;
+			border-radius: 50%;
 			}
 
 			#regular{
@@ -71,7 +75,8 @@
 			display:inline-block;
 			background-color: white;
 			margin:5px;
-			z-index: 5;
+			z-index: 5;;
+			border-radius: 50%;
 			}
 
 			#medium{
@@ -81,7 +86,8 @@
 			background-color: white;
 			display:inline-block;
 			margin:5px;
-			z-index: 5;
+			z-index: 5;;
+			border-radius: 50%;
 			}
 
 			#big{
@@ -91,7 +97,8 @@
 			background-color: white;
 			display:inline-block;
 			margin:5px;
-			z-index: 5;
+			z-index: 5;;
+			border-radius: 50%;
 			}
 
 			#bigger{
@@ -101,50 +108,64 @@
 			background-color: white;
 			display:inline-block;
 			margin:5px;
-			z-index: 5;
+			z-index: 5;;
+			border-radius: 50%;
 			}
 
-			#one{
-			background-color: red
+		#one{
+		background-color: red;
+		border-radius: 50%;
 		}
 		#two{
-			background-color: orange
+			background-color: orange;
+			border-radius: 50%;
 }
 		#three{
-			background-color: yellow
+			background-color: yellow;
+			border-radius: 50%;
 }
 		#four{
-			background-color: green
+			background-color: green;
+			border-radius: 50%;
 }
 		#five{
-			background-color: cyan
+			background-color: cyan;
+			border-radius: 50%;
 }
 		#six{
-			background-color: blue
+			background-color: blue;
+			border-radius: 50%;
 }
 		#seven{
-			background-color: purple
+			background-color: purple;
+			border-radius: 50%;
 }
 		#eight{
-			background-color: magenta
+			background-color: magenta;
+			border-radius: 50%;
 }
 		#nine{
-			background-color: pink
+			background-color: pink;
+			border-radius: 50%;
 }
 		#ten{
 			background-color: white;
 			border:1px solid black;
+			border-radius: 50%;
 }
 #eleven{
-			background-color: gray
+			background-color: gray;
+			border-radius: 50%;
 		}
 
 #twleve{
-			background-color: darkgray
+			background-color: darkgray;
+			border-radius: 50%;
 }
 #thirteen{
 			background-color: black;
 			border:1px solid white;
+			border-radius: 50%;
 }
 	
 </style>
@@ -155,7 +176,7 @@
 	<div id="one" class="pixel"></div>
 	<div id="two" class="pixel"></div>
 	<div id="three" class="pixel"></div>
-	<div id="four"class="pixel"></div>
+	<div id="four" class="pixel"></div>
 	<div id="five" class="pixel"></div>
 	<div id="six" class="pixel"></div>
 	<div id="seven" class="pixel"></div>
@@ -167,10 +188,10 @@
 	<div id="thirteen" class="pixel"></div>
 	<div id="little"></div>
 	<div id="regular"></div>
-	<div id="medium" ></div>
-	<div id="big" ></div>
+	<div id="medium"></div>
+	<div id="big"></div>
 	<div id="bigger"></div>
-	<div id="instructions">click a color and size block to select and change color and size. click the screen to draw by hovering and click again to stop the drawing</div></a>
+	<div id="instructions">click a color and size block to select and change color and size. click the screen to draw by hovering and click again to stop the drawing</div>
 	<a href="projects.html"><div id="back">back</div></a>
 
 
@@ -267,13 +288,8 @@ function makeDiv (event){
 		pixel.style.top = event.clientY-5 +"px"
 		pixel.style.width = size +"px"
 		pixel.style.height = size +'px'
-
-		function removeClass (){
-			pixel.classList.remove("pixel");
-
-		}
-setTimeout(removeClass, 50)
-	}
+		pixel.style.borderRadius = "50%"
+}
 
 document.addEventListener("click", function (){
 
@@ -344,7 +360,6 @@ bigger.addEventListener("click", function (){
 	counter =1
 })
 </script>
-
 
 </body>
 </html>
