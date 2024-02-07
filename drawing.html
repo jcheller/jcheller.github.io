@@ -253,29 +253,42 @@ thirteen.addEventListener("click", function(){
 })
 
 var size=10;
+var offset1=5;
+var offset2=5;
 
 little.addEventListener("click", function(){
 		size = "5"
+		offset1 = "1.5"
+		offset2 = "1.5"
 			console.log(size)
 })
 
 regular.addEventListener("click", function(){
 		size = "10"
+		offset1 = "5"
+		offset2 = "5"
 			console.log(size)
 })
 
 medium.addEventListener("click", function(){
 		size = "20"
+		offset1 = "10"
+		offset2 = "9"
 			console.log(size)
 })
 big.addEventListener("click", function(){
 		size = "35"
+		offset1 = "20"
+		offset2 = "18"
 			console.log(size)
 })
 bigger.addEventListener("click", function(){
 		size = "50"
+		offset1 = "25"
+		offset2 = "25"
 			console.log(size)
 })
+
 	var counter = 0;
 
 function makeDiv (event){
@@ -284,8 +297,8 @@ function makeDiv (event){
 		pixel.classList.add('pixel')
 		pixel.style.position = "absolute"
 		pixel.style.backgroundColor = feature
-		pixel.style.left = event.clientX-5 +"px"
-		pixel.style.top = event.clientY-5 +"px"
+		pixel.style.left = event.clientX-offset1-5 +"px"
+		pixel.style.top = event.clientY-offset2-5 +"px"
 		pixel.style.width = size +"px"
 		pixel.style.height = size +'px'
 		pixel.style.borderRadius = "50%"
