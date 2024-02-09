@@ -30,13 +30,13 @@
 			font-size:20px;
 			background-color: black;
 			position: absolute;
-			top: 15px;
+			top: 95%;
 			left: 95%;
 			z-index: 5;
 			}
 
 	#instructions{
-			width:380px;
+			width:430px;
 			height:20px;
 			font-family:courier;
 			text-align:center;
@@ -44,8 +44,8 @@
 			font-size:15px;
 			background-color: black;
 			position: absolute;
-			top: 15px;
-			left: 66.5%;
+			top: 8px;
+			left: 69.25%;
 			z-index: 5;
 			}
 
@@ -111,6 +111,21 @@
 			z-index: 5;;
 			border-radius: 50%;
 			}
+
+	#shaper{
+		width:50px;
+		height:50px;
+		background-image: url(shapes.png); 
+		background-size:contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		display:inline-block;
+		position: absolute;
+		top: 4px;
+		left: 64%;
+		margin:5px;
+		z-index: 5;;
+		}
 
 		#one{
 		background-color: red;
@@ -191,6 +206,7 @@
 	<div id="medium"></div>
 	<div id="big"></div>
 	<div id="bigger"></div>
+	<div id="shaper"></div>
 	<div id="instructions">click a color and size block to select and change color and size. click the screen to draw by hovering and click again to stop the drawing</div>
 	<a href="projects.html"><div id="back">back</div></a>
 
@@ -252,9 +268,24 @@ thirteen.addEventListener("click", function(){
 			console.log(feature)
 })
 
-var size=10;
-var offset1=5;
-var offset2=5;
+var size=20;
+var offset1=10;
+var offset2=11;
+var shape=50;
+var counter2 = 0;
+
+shaper.addEventListener("click", function(){
+counter2 =counter2+1;
+	if (counter2%2 == 1) {
+shape="0"
+		console.log(shape)
+
+	}
+	if (counter2%2 == 0) {
+		shape="50"
+		console.log(shape)
+	}
+	})
 
 little.addEventListener("click", function(){
 		size = "5"
@@ -273,7 +304,7 @@ regular.addEventListener("click", function(){
 medium.addEventListener("click", function(){
 		size = "20"
 		offset1 = "10"
-		offset2 = "9"
+		offset2 = "11"
 			console.log(size)
 })
 big.addEventListener("click", function(){
@@ -301,7 +332,7 @@ function makeDiv (event){
 		pixel.style.top = event.clientY-offset2-5 +"px"
 		pixel.style.width = size +"px"
 		pixel.style.height = size +'px'
-		pixel.style.borderRadius = "50%"
+		pixel.style.borderRadius = shape +'%'
 }
 
 document.addEventListener("click", function (){
@@ -372,6 +403,11 @@ big.addEventListener("click", function (){
 bigger.addEventListener("click", function (){
 	counter =1
 })
+
+shaper.addEventListener("click", function (){
+	counter =1
+})
+
 </script>
 
 </body>
