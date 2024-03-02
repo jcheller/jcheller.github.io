@@ -9,11 +9,7 @@
 	
 	#backdrop{
 			width:1440px;
-			height:900px;
-			font-family:courier;
-			text-align:center;
-			csolor:white;
-			font-size:25px;
+			height:685px;
 			background-color: black;
 			position: absolute;
 			top: 0px;
@@ -22,37 +18,51 @@
 			}
 
 	#back{
-			width:10px;
-			height:20px;
+			width:60px;
+			height:25px;
 			font-family:courier;
 			text-align:center;
 			color:white;
 			font-size:20px;
 			background-color: black;
 			position: absolute;
-			top: 95%;
+			top: 3%;
 			left: 95%;
 			z-index: 5;
 			}
 
 	#instructions{
-			width:430px;
-			height:20px;
+			width:250px;
+			height:40px;
 			font-family:courier;
 			text-align:center;
 			color:white;
-			font-size:15px;
+			font-size:30px;
 			background-color: black;
 			position: absolute;
-			top: 8px;
-			left: 69.25%;
+			top: 12.5px;
+			left: 70%;
 			z-index: 5;
+			border:1px solid white;
+			border-radius: 5px;
 			}
 
 			.pixel{
 			width:40px;
 			height:40px;
 			display:inline-block;
+			margin:5px;
+			z-index: 5;
+			}
+
+			#colorwheel{
+			width:43px;
+			height:43px;
+			background-size:contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			display:inline-block;
+			background-image: url(ColorWheel1.png);
 			margin:5px;
 			z-index: 5;
 			}
@@ -121,47 +131,99 @@
 		background-repeat: no-repeat;
 		display:inline-block;
 		position: absolute;
-		top: 4px;
-		left: 64%;
+		top: 65px;
+		left: 0.2%;
 		margin:5px;
 		z-index: 5;;
+		}
+
+		#paintbrush{
+		width:44px;
+		height:47px;
+		background-image: url(paintbrush.png); 
+		background-size:contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		display:inline-block;
+		position: absolute;
+		top: 125px;
+		left: 0%;
+		margin:5px;
+		z-index: 5;;
+		border:3px solid black;
+
+		}
+
+		#filler{
+		width:44px;
+		height:47px;
+		background-image: url(filler.png); 
+		background-size:contain;
+		background-position: center;
+		background-repeat: no-repeat;
+		display:inline-block;
+		position: absolute;
+		top: 185px;
+		left: 0%;
+		margin:5px;
+		z-index: 5;
+		border:3px solid black;
+
 		}
 
 		#one{
 		background-color: red;
 		border-radius: 50%;
+		border:1px solid black;
+
 		}
 		#two{
 			background-color: orange;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 		#three{
 			background-color: yellow;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 		#four{
 			background-color: green;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 		#five{
 			background-color: cyan;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 		#six{
 			background-color: blue;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 		#seven{
 			background-color: purple;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 		#eight{
 			background-color: magenta;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 		#nine{
 			background-color: pink;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 		#ten{
 			background-color: white;
@@ -171,11 +233,15 @@
 #eleven{
 			background-color: gray;
 			border-radius: 50%;
+			border:1px solid black;
+
 		}
 
 #twleve{
 			background-color: darkgray;
 			border-radius: 50%;
+			border:1px solid black;
+
 }
 #thirteen{
 			background-color: black;
@@ -201,19 +267,26 @@
 	<div id="eleven" class="pixel"></div>
 	<div id="twleve" class="pixel"></div>
 	<div id="thirteen" class="pixel"></div>
+	<div id="colorwheel"></div>
+	<div id="paintbrush"></div>
+	<div id="filler"></div>
 	<div id="little"></div>
 	<div id="regular"></div>
 	<div id="medium"></div>
 	<div id="big"></div>
 	<div id="bigger"></div>
 	<div id="shaper"></div>
-	<div id="instructions">click a color and size block to select and change color and size. click the screen to draw by hovering and click again to stop the drawing</div>
+	<div id="instructions">random prompt</div>
 	<a href="projects.html"><div id="back">back</div></a>
 
 
 <script type="text/javascript">
 
 var feature;
+var x;
+var y;
+var z;
+var prompts
 	one.addEventListener("click", function(){
 		feature = "red"
 		console.log(feature)
@@ -268,11 +341,25 @@ thirteen.addEventListener("click", function(){
 			console.log(feature)
 })
 
+colorwheel.addEventListener("click", function(){
+
+var x = Math.floor(Math.random()*255);
+var y = Math.floor(Math.random()*255);
+var z = Math.floor(Math.random()*255);
+
+feature ="rgb(" + x + ","+ y + ","+z+")"
+})
+
+var prompts = ["boy", "sun", "house", "car", "the moon","cheese", "mouse", "heart", "bird", "cactus", "volcano","ocean", "fire", "beach", "mountain", "palm tree", "clock","dinosaur", "wizard", "sky", "mermaid", "sunset", "rose", "girl", "fried egg", "shark", "fish", "horse", "batman", "the hulk","glasses", "octopus", "pirate ship", "spongebob", "pencil", "bed","painter", "earth", "America", "ninja", "snoop dogg", "airplane","money", "walter white", "gift", "jedi", "football", "pumpkin", "building"]
+	
+var randomNumber = Math.floor(prompts.length*Math.random())
+
 var size=20;
 var offset1=10;
 var offset2=11;
 var shape=50;
 var counter2 = 0;
+
 
 shaper.addEventListener("click", function(){
 counter2 =counter2+1;
@@ -335,7 +422,84 @@ function makeDiv (event){
 		pixel.style.borderRadius = shape +'%'
 }
 
-document.addEventListener("click", function (){
+function fillBackground () {
+	var backdrop = document.getElementById("backdrop")
+	backdrop.style.backgroundColor = feature
+	backdrop.style.zIndex = "-5"
+
+	var instructions = document.getElementById("instructions")
+	instructions.style.backgroundColor = feature
+}
+
+function prompt () {
+
+	if (randomNumber < prompts.length) {
+		randomNumber = randomNumber + 1
+	}
+
+	if (randomNumber > 48) {
+		randomNumber = randomNumber - 48
+	}
+console.log(randomNumber)
+
+	var word = prompts[randomNumber];
+
+	var instructions = document.getElementById("instructions")
+	instructions.innerText = word
+
+
+}
+
+function fillerIndicator (){
+	var filler = document.getElementById("filler")
+	filler.style.borderColor = "red"
+	filler.style.borderRadius = "5px"
+	filler.style.borderWidth = "4px"
+	filler.style.width = "44px"
+	filler.style.height = "47px"
+
+	
+	var paintbrush = document.getElementById("paintbrush")
+	paintbrush.style.borderColor = "black"
+	paintbrush.style.borderRadius = "1px"
+	paintbrush.style.borderWidth = "0px"
+	paintbrush.style.width = "47px"
+	paintbrush.style.height = "51px"
+
+}
+
+function drawIndicator (){
+	var paintbrush = document.getElementById("paintbrush")
+	paintbrush.style.borderColor = "red"
+	paintbrush.style.borderRadius = "5px"
+	paintbrush.style.borderWidth = "4px"
+	paintbrush.style.width = "44px"
+	paintbrush.style.height = "47px"
+
+var filler = document.getElementById("filler")
+	filler.style.borderColor = "black"
+	filler.style.borderRadius = "1px"
+	filler.style.borderWidth = "0px"
+	filler.style.width = "47px"
+	filler.style.height = "51px"
+
+}
+
+function fontColor (){
+
+	if (feature == "black") {
+		var instructions = document.getElementById("instructions")
+		instructions.style.color = "white";
+	}
+
+	else {
+		var instructions = document.getElementById("instructions")
+		instructions.style.color = "black";
+	}
+}
+
+
+function draw (){
 
 	counter =counter+1;
 	if (counter%2 == 1) {
@@ -346,7 +510,90 @@ document.addEventListener("click", function (){
 	if (counter%2 == 0) {
 		backdrop.removeEventListener("mousemove", makeDiv)
 	}
+}
+
+filler.addEventListener("click", fillerIndicator)
+
+filler.addEventListener("click", function(){
+		counter =1
+
+var instructions = document.getElementById("instructions")
+		instructions.style.color = "white";
+
+document.removeEventListener("click", draw)
+
+document.addEventListener("click", fontColor)
+
+backdrop.removeEventListener("mousemove", makeDiv)
+
+one.addEventListener("click", fillBackground)
+
+two.addEventListener("click", fillBackground)
+
+three.addEventListener("click", fillBackground)
+
+four.addEventListener("click", fillBackground)
+
+five.addEventListener("click", fillBackground)
+
+six.addEventListener("click", fillBackground)
+
+seven.addEventListener("click", fillBackground)
+
+eight.addEventListener("click", fillBackground)
+
+nine.addEventListener("click", fillBackground)
+
+ten.addEventListener("click", fillBackground)
+
+eleven.addEventListener("click", fillBackground)
+
+twleve.addEventListener("click", fillBackground)
+
+thirteen.addEventListener("click", fillBackground)
+
+colorwheel.addEventListener("click", fillBackground)
+
 })
+
+paintbrush.addEventListener("click", drawIndicator)
+
+paintbrush.addEventListener("click", function(){
+	counter =1
+
+document.addEventListener("click", draw)
+
+one.removeEventListener("click", fillBackground)
+
+two.removeEventListener("click", fillBackground)
+
+three.removeEventListener("click", fillBackground)
+
+four.removeEventListener("click", fillBackground)
+
+five.removeEventListener("click", fillBackground)
+
+six.removeEventListener("click", fillBackground)
+
+seven.removeEventListener("click", fillBackground)
+
+eight.removeEventListener("click", fillBackground)
+
+nine.removeEventListener("click", fillBackground)
+
+ten.removeEventListener("click", fillBackground)
+
+eleven.removeEventListener("click", fillBackground)
+
+twleve.removeEventListener("click", fillBackground)
+
+thirteen.removeEventListener("click", fillBackground)
+
+colorwheel.removeEventListener("click", fillBackground)
+
+})
+
+
 
 one.addEventListener("click", function (){
 	counter =1
@@ -388,6 +635,10 @@ thirteen.addEventListener("click", function (){
 	counter =1
 })
 
+colorwheel.addEventListener("click", function (){
+	counter =1
+})
+
 little.addEventListener("click", function (){
 	counter =1
 })
@@ -408,7 +659,12 @@ shaper.addEventListener("click", function (){
 	counter =1
 })
 
+instructions.addEventListener("click", prompt)		
+
+
+
 </script>
+
 
 </body>
 </html>

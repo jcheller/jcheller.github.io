@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		
+
+	#back{
+			width:20px;
+			height:20px;
+			font-family:courier;
+			text-align:center;
+			color:black;
+			font-size:25px;
+			background-color: none;
+			position: absolute;
+			top: 10px;
+			left: 90%;
+			z-index: 5;
+			}
+
+	
+	#frog{
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	top: 200px;
+	left: 40%;
+	background-image:url(frog.png);
+	background-size:contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	}
+
+	.infos{
+		width:500px;
+		height:400px;
+		background-repeat:no-repeat;
+		background-size:contain;
+		background-position: center;
+		opacity:0;
+		z-index: 5
+
+		}
+body{
+
+		background-image:url(valentines.png); 
+  			background-repeat:no-repeat;
+  			background-size:cover;
+  			z-index: -2
+
+  			}
+
+  #info1{
+  	background-image:url(info1.png);
+  	position: absolute;
+  	top: 20px;
+  	left: 5%;
+  }
+
+    #info2{
+  	background-image:url(info2.png);
+  	position: absolute;
+  	top: 280px;
+  	left: 8%;
+  }
+
+    #info3{
+  	background-image:url(info3.png);
+  	position: absolute;
+  	top: 440px;
+  	left: 6%;
+  }
+
+#info4{
+  	background-image:url(info4.png);
+  	position: absolute;
+  	top: 700px;
+  	left: 35%;
+  	height: 100px
+  }
+
+  #info7{
+  	background-image:url(info7.png);
+  	position: absolute;
+  	top: 580px;
+  	left: 78%;
+  	width: 200px;
+  	height: 200px;
+  }
+
+  #info6{
+  	background-image:url(info6.png);
+  	position: absolute;
+  	top: -80px;
+  	left: 60%;
+  }
+  #info5{
+  	background-image:url(info5.png);
+  	position: absolute;
+  	top: 170px;
+  	left: 70%;
+  	height: 500px;
+  	width: 500px;
+  	
+  }
+
+  
+	</style>
+</head>
+<body>
+
+<div id="frog"></div>
+
+<h1> valentines day thing for a stock photo frog </h1>
+
+	<div class="infos" id="info1"></div>
+	<div class="infos" id="info2"></div>
+	<div class="infos" id="info3"></div>
+	<div class="infos" id="info4"></div>
+	<div class="infos" id="info5"></div>
+	<div class="infos" id="info6"></div>
+	<div class="infos" id="info7"></div>
+	<a href="projects.html"><div id="back">back</div></a>
+
+	<script type="text/javascript">
+
+		var counter = 0;
+
+		frog.addEventListener("click", function (){
+			console.log("what?")
+
+		counter =counter+1;
+
+		if(counter==1){
+			info1.style.opacity = "1"
+		}
+
+		if(counter==2){
+			info2.style.opacity = "1"
+		}
+
+		if(counter==3){
+			info3.style.opacity = "1"
+			
+		}
+
+		if(counter==4){
+			info4.style.opacity = "1"
+			
+		}
+
+		if(counter==5){
+			info5.style.opacity = "1"}
+
+		if(counter==6){
+			info6.style.opacity = "1"
+		
+		}
+
+		if(counter==7){
+			info7.style.opacity = "1"
+		}
+})
+	</script>
+
+</body>
+</html>
