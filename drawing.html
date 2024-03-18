@@ -32,7 +32,7 @@
 			border-radius: 10px;
 			}
 
-	#top{
+	#top1{
 		width: 100%;
 		height: 65px;
 		background-color:gray;
@@ -43,9 +43,9 @@
 		border:1px solid black;
 	}
 
-	#left{
+	#left1{
 		width: 65px;
-		height: 100%;
+		height: 617px;
 		background-color:gray;
 		position: absolute;
 		top: 9.5%;
@@ -292,8 +292,8 @@
 	<div id="thirteen" class="pixel"></div>
 	<div id="colorwheel"></div>
 	<div id="paintbrush"></div>
-	<div id="top"></div>
-	<div id="left"></div>
+	<div id="top1"></div>
+	<div id="left1"></div>
 	<div id="filler"></div>
 	<div id="little"></div>
 	<div id="regular"></div>
@@ -375,7 +375,7 @@ var z = Math.floor(Math.random()*255);
 feature ="rgb(" + x + ","+ y + ","+z+")"
 })
 
-var prompts = ["boy", "sun", "house", "car", "the moon","cheese", "mouse", "heart", "bird", "cactus", "volcano","ocean", "fire", "beach", "mountain", "palm tree", "clock","dinosaur", "wizard", "sky", "mermaid", "sunset", "rose", "girl", "fried egg", "shark", "fish", "horse", "batman", "the hulk","glasses", "octopus", "pirate ship", "spongebob", "pencil", "bed","painter", "earth", "America", "ninja", "snoop dogg", "airplane","money", "walter white", "gift", "jedi", "football", "pumpkin", "building"]
+var prompts = ["moose", "sun", "house", "car", "the moon","cheese", "mouse", "heart", "bird", "cactus", "volcano","ocean", "fire", "beach", "mountain", "palm tree", "clock","dinosaur", "wizard", "sky", "mermaid", "sunset", "rose", "girl", "fried egg", "shark", "fish", "horse", "batman", "the hulk","glasses", "octopus", "pirate ship", "spongebob", "pencil", "bed","painter", "earth", "America", "ninja", "snoop dogg", "airplane","money", "walter white", "gift", "jedi", "football", "pumpkin", "building"]
 	
 var randomNumber = Math.floor(prompts.length*Math.random())
 
@@ -460,7 +460,7 @@ function prompt () {
 	}
 
 	if (randomNumber > 48) {
-		randomNumber = randomNumber - 48
+		randomNumber = randomNumber - 49
 	}
 console.log(randomNumber)
 
@@ -532,6 +532,8 @@ document.removeEventListener("click", draw)
 
 backdrop.removeEventListener("mousemove", makeDiv)
 
+backdrop.removeEventListener("mousemove", makeDiv)
+
 one.addEventListener("click", fillBackground)
 
 two.addEventListener("click", fillBackground)
@@ -566,6 +568,8 @@ paintbrush.addEventListener("click", drawIndicator)
 
 paintbrush.addEventListener("click", function(){
 	counter =1
+
+document.addEventListener("click", draw)
 
 document.addEventListener("click", draw)
 
@@ -663,6 +667,16 @@ bigger.addEventListener("click", function (){
 
 shaper.addEventListener("click", function (){
 	counter =1
+})
+
+top1.addEventListener("click", function (){
+	counter =1
+	console.log(counter)
+})
+
+left1.addEventListener("click", function (){
+	counter =1
+	console.log(counter)
 })
 
 instructions.addEventListener("click", prompt)		

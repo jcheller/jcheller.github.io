@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#header{
+			width: 99.55%;
+			height: 60px;
+			background-color: black;
+			font-family:courier;
+			text-align:center;
+			color:white;
+			border:3px solid white;
+			font-size:42px;
+			position: absolute;
+			top: 0px;
+			left: 0%;
+		}
+			#daltonbackground{
+			width: 100%;
+			height: 100%;
+			background-image:url(dalton.png);
+			background-size:contain;
+			background-color: black;
+			background-position: center;
+			background-repeat: no-repeat;
+			position: absolute;
+			top: 0px;
+			transition: 3s;
+			left: 0%;
+			z-index: -2
+		}
+			#entrance{
+			height: 129px;
+			width: 115px;
+			position:absolute;
+			background-color: none;
+			top: 439px;
+			left: 664px;
+			z-index: -1;
+			transition: 1.8s;
+			border-radius: 6.5%
+		}
+
+
+		#mousepointer{
+			width: 70px;
+			height: 70px;			
+			position:absolute;
+			background-image: url(enter.png);
+			background-size:contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-color: none;
+			top: 470px;
+			left: 690px;
+			transition: 3s;
+			z-index: -2
+		}
+
+		#easy{
+			width: 125px;
+			height: 50px;	
+			color: black;
+			text-align: center;	
+			font-size: 30px;		
+			font-family: courier;
+			position:absolute;
+			background-color: green;
+			border:6px solid darkgreen;
+			top: 350px;
+			left: -28%;
+			transition: 2s;
+			opacity: 0;
+			border-radius: 10%;
+			z-index:-1;
+		}
+
+		#medium{
+			width: 125px;
+			height: 50px;	
+			color: black;
+			text-align: center;	
+			font-size: 30px;	
+			font-family: courier;			
+			position:absolute;
+			background-color: yellow;
+			border:6px solid yellow;
+			top: -251.5px;
+			left: 656px;
+			transition: 2s;
+			opacity: 0;
+			border-radius: 10%;
+			z-index: -1
+		}
+
+		#hard{
+			width: 125px;
+			height: 50px;		
+			color: black;
+			text-align: center;				
+			font-size: 30px;	
+			font-family: courier;	
+			position:absolute;
+			background-color: red;
+			border:6px solid darkred;
+			top: 350px;
+			left: 162.8%;
+			transition: 2s;
+			opacity: 0;
+			border-radius: 10%;
+			z-index: -1
+		}
+
+		#difficulty{
+			width: 600px;
+			height: 70px;		
+			color: lightgray;
+			text-align: center;				
+			font-size: 45px;	
+			transition: 2s;
+			font-family: courier;
+			background-color: none;
+			position:absolute;
+			top: 1000px;
+			left: 422px;
+			opacity: 0;
+			z-index: -1;
+		}
+
+
+	</style>
+</head>
+<body>
+<div id="header"> Dalton Geoguessr</div>
+	<div id="daltonbackground"></div>
+	<div id="entrance"></div>
+	<a href="easyDGeoguessr.html"><div id="easy">easy</div></a>
+	<a href="mediumDGeoguessr.html"><div id="medium">medium</div></a>
+	<a href="hardDGeoguessr.html"><div id="hard">hard</div></a>
+	<div id="difficulty">choose a difficulty</div>
+	<div id="mousepointer"></div>
+
+	<script type="text/javascript">
+
+function shade (){
+	var entrance = document.getElementById("entrance")
+	entrance.style.opacity = "0.75"
+	entrance.style.backgroundColor = "black"
+
+}
+function noShade (){
+var entrance = document.getElementById("entrance")
+	entrance.style.opacity = "0"
+	entrance.style.backgroundColor = "none"
+}
+
+entrance.addEventListener("mouseover", shade)
+
+entrance.addEventListener("mouseout", noShade)
+
+function selectDifficulty (){
+transition = "3"
+
+var entrance = document.getElementById("entrance")
+	entrance.removeEventListener("mouseover", shade)
+	entrance.removeEventListener("mouseout", noShade)
+	entrance.style.opacity = "0.75"
+	entrance.style.zIndex = "-1.5"
+	entrance.style.top = "116px"
+	entrance.style.left = "340px"
+	entrance.style.width = "760px"
+	entrance.style.height = "500px"
+	entrance.style.borderRadius = "10%"
+	
+
+	var mousepointer = document.getElementById("mousepointer")	
+	mousepointer.style.opacity = "0"	
+
+	var easy = document.getElementById("easy")	
+	easy.style.opacity = "0.85"
+	easy.style.left = "28%"
+
+	var medium = document.getElementById("medium")	
+	medium.style.opacity = "0.85"
+	medium.style.top = "251.5px"
+
+	var hard = document.getElementById("hard")	
+	hard.style.opacity = "0.85"
+	hard.style.left = "62.8%"
+
+	var difficulty = document.getElementById("difficulty")	
+	difficulty.style.opacity = "1"
+	difficulty.style.zIndex = "-1"
+	difficulty.style.top = "480px"	
+}
+
+entrance.addEventListener("click", selectDifficulty)
+
+
+	</script>
+	
+</body>
+</html>
