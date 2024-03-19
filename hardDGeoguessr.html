@@ -4,16 +4,87 @@
 	<title></title>
 
 	<style type="text/css">
-		
+		body{
+			background-color: black;
+		}
 		#hard{
 			width: 200px;
 			height: 200px;
 			position: absolute;
 			top: 0px;
 			left:50%;
-			color: black;
+			color: white;
 			font-size: 40px;
-			
+		}
+
+		#controls{
+			width: 300px;
+			height: 50px;
+			color: white;
+			position: absolute;
+			text-align: center;
+			background-color: black;
+			border: 2px solid white;
+			top: 100px;
+			left:200px;
+			font-size: 40px;
+			border-radius: 10%;
+		}
+
+		#timeSlider{
+			width: 300px;
+			height: 5px;
+			position: absolute;
+			text-align: center;
+			background-color: white;
+			border: 4px solid darkgreen;
+			top: 200px;
+			left:200px;
+			font-size: 40px;
+		}
+
+		#sliderBall{
+			width: 30px;
+			height: 30px;
+			position: absolute;
+			background-color: white;
+			border: 4px solid darkgreen;
+			top: 187px;
+			left:200px;
+			border-radius: 50%;
+		}
+
+		#timeSlider2{
+			width: 300px;
+			height: 5px;
+			position: absolute;
+			text-align: center;
+			background-color: white;
+			border: 4px solid darkgreen;
+			top: 265px;
+			left:200px;
+			font-size: 40px;
+		}
+
+		#sliderBall2{
+			width: 30px;
+			height: 30px;
+			position: absolute;
+			background-color: white;
+			border: 4px solid darkgreen;
+			top: 252px;
+			left:200px;
+			border-radius: 50%;
+		}
+
+#imageTime{
+			width: 225px;
+			height: 70px;
+			position: absolute;
+			top: 300px;
+			left:260px;
+			color: white;
+			font-size: 40px;
 		}
 
 	</style>
@@ -22,6 +93,65 @@
 <body>
 
 	<div id="hard">hard</div>
+	<div id="controls">time controls</div>
+	<div id="timeSlider"></div>
+	<div id="sliderBall"></div>
+	<div id="timeSlider2"></div>
+	<div id="sliderBall2"></div>
+	<div id="imageTime">__min __sec</div>
+
+<script type="text/javascript">
+
+var minuteTime = 0;
+var secondTime = 0;
+
+timeSlider.addEventListener('click', (event) => {
+  var sliderBall = document.getElementById('sliderBall');
+  sliderBall.style.left = event.clientX-15 + 'px';
+
+if (parseInt(sliderBall.style.left) < 200) {
+var sliderBall = document.getElementById("sliderBall")
+sliderBall.style.left = "200px"
+}
+})
+
+//
+
+timeSlider2.addEventListener('click', (event) => {
+  var sliderBall2 = document.getElementById('sliderBall2');
+  sliderBall2.style.left = event.clientX-15 + 'px';
+
+if (parseInt(sliderBall2.style.left) < 192) {
+var sliderBall2 = document.getElementById("sliderBall2")
+sliderBall2.style.left = "192px"
+}
+})
+
+timeSlider.addEventListener("click", function(){
+document.addEventListener("click", function(){
+var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
+var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)+2
+
+var imageTime = document.getElementById("imageTime")
+imageTime.innerText = minuteTime + 'min ' + secondTime + 'sec'
+})
+})
+
+timeSlider2.addEventListener("click", function(){
+document.addEventListener("click", function(){
+
+var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
+var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)+2
+
+var imageTime = document.getElementById("imageTime")
+imageTime.innerText = minuteTime + 'min ' + secondTime + 'sec'
+
+
+})
+
+})
+
+</script>
 
 </body>
 </html>
