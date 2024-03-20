@@ -7,49 +7,86 @@
 		body{
 			background-color: black;
 		}
-		#easy{
-			width: 200px;
-			height: 200px;
+		#header{
+			width: 99.55%;
+			height: 60px;
+			background-color: black;
+			font-family:courier;
+			text-align:center;
+			color:white;
+			border:3px solid white;
+			font-size:42px;
 			position: absolute;
 			top: 0px;
-			left:50%;
-			color: white;
-			font-size: 40px;
+			left: 0%;
 		}
 
 		#controls{
-			width: 300px;
+			width: 360px;
+			height: 400px;
+			color: white;
+			position: absolute;
+			text-align: center;
+			transition: 1s;
+			background-color: black;
+			border: 2px solid white;
+			top: 150px;
+			left:170px;
+			font-size: 40px;
+			border-radius: 10%;
+		}
+
+		#playButton{
+			width: 100px;
 			height: 50px;
+			color: white;
+			transition: 1s;
+			position: absolute;
+			text-align: center;
+			background-color: black;
+			border: 2px solid white;
+			top: 150px;
+			left:1100px;
+			font-size: 40px;
+			border-radius: 10%;
+		}
+
+		#countdown{
+			width: 150px;
+			height: 150px;
 			color: white;
 			position: absolute;
 			text-align: center;
 			background-color: black;
 			border: 2px solid white;
-			top: 100px;
-			left:200px;
-			font-size: 40px;
+			opacity: 0;
+			top: 40%;
+			left:42%;
+			font-size: 120px;
 			border-radius: 10%;
 		}
 
 		#timeSlider{
 			width: 300px;
 			height: 5px;
+			transition: 1s;
 			position: absolute;
 			text-align: center;
 			background-color: white;
 			border: 4px solid darkgreen;
-			top: 200px;
+			top: 250px;
 			left:200px;
 			font-size: 40px;
 		}
 
 		#sliderBall{
 			width: 30px;
+			transition: 1s;
 			height: 30px;
 			position: absolute;
 			background-color: white;
 			border: 4px solid darkgreen;
-			top: 187px;
+			top: 237px;
 			left:200px;
 			border-radius: 50%;
 		}
@@ -58,10 +95,11 @@
 			width: 300px;
 			height: 5px;
 			position: absolute;
+			transition: 1s;
 			text-align: center;
 			background-color: white;
 			border: 4px solid darkgreen;
-			top: 265px;
+			top: 315px;
 			left:200px;
 			font-size: 40px;
 		}
@@ -70,9 +108,10 @@
 			width: 30px;
 			height: 30px;
 			position: absolute;
+			transition: 1s;
 			background-color: white;
 			border: 4px solid darkgreen;
-			top: 252px;
+			top: 302px;
 			left:200px;
 			border-radius: 50%;
 		}
@@ -81,7 +120,8 @@
 			width: 225px;
 			height: 70px;
 			position: absolute;
-			top: 300px;
+			transition: 1s;
+			top: 350px;
 			left:260px;
 			color: white;
 			font-size: 40px;
@@ -92,10 +132,12 @@
 </head>
 <body>
 
-	<div id="easy">easy</div>
+	<div id="header">Dalton Geoguessr - easy</div>
 	<div id="controls">time controls</div>
 	<div id="timeSlider"></div>
 	<div id="sliderBall"></div>
+	<div id="countdown"></div>
+	<div id="playButton">play</div>
 	<div id="timeSlider2"></div>
 	<div id="sliderBall2"></div>
 	<div id="imageTime">__min __sec</div>
@@ -105,52 +147,91 @@
 var minuteTime = 0;
 var secondTime = 0;
 
-timeSlider.addEventListener('click', (event) => {
-  var sliderBall = document.getElementById('sliderBall');
+ function timeSetting1 (event){
+var sliderBall = document.getElementById('sliderBall');
   sliderBall.style.left = event.clientX-15 + 'px';
 
 if (parseInt(sliderBall.style.left) < 200) {
 var sliderBall = document.getElementById("sliderBall")
 sliderBall.style.left = "200px"
-}
-})
+}}
 
-//
-
-timeSlider2.addEventListener('click', (event) => {
-  var sliderBall2 = document.getElementById('sliderBall2');
+function timeSetting2 (event){
+var sliderBall2 = document.getElementById('sliderBall2');
   sliderBall2.style.left = event.clientX-15 + 'px';
 
-if (parseInt(sliderBall2.style.left) < 192) {
+if (parseInt(sliderBall2.style.left) < 200) {
 var sliderBall2 = document.getElementById("sliderBall2")
-sliderBall2.style.left = "192px"
+sliderBall2.style.left = "200px"
+}}
+
+function showTime(){
+document.addEventListener("click", function(){
+var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
+var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)+2
+
+var imageTime = document.getElementById("imageTime")
+imageTime.innerText = minuteTime + 'min ' + secondTime + 'sec'
+})
 }
-})
 
-timeSlider.addEventListener("click", function(){
-document.addEventListener("click", function(){
-var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
-var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)+2
+function startGame() {
+	var countdown = document.getElementById("countdown")
+	countdown.style.opacity = 1
+	countdown.innerText = 3;
+
+    setTimeout(function() {
+    var countdown = document.getElementById("countdown")
+	countdown.innerText = 2;
+   	}, 1000)
+
+   	setTimeout(function() {
+    var countdown = document.getElementById("countdown")
+	countdown.innerText = 1;
+   	}, 2000)
+
+   	setTimeout(function() {
+    var countdown = document.getElementById("countdown")
+	countdown.style.zIndex = -5;
+	countdown.style.opacity = 0;
+   	}, 3000)
+  }
+
+function startpageDisappear(){
+
+var controls = document.getElementById("controls")
+controls.style.opacity = 0
+
+var timeSlider = document.getElementById("timeSlider")
+timeSlider.style.opacity = 0
+
+var timeSlider2 = document.getElementById("timeSlider2")
+timeSlider2.style.opacity = 0
+
+var sliderBall2 = document.getElementById("sliderBall2")
+sliderBall2.style.opacity = 0
+
+var sliderBall = document.getElementById("sliderBall")
+sliderBall.style.opacity = 0
 
 var imageTime = document.getElementById("imageTime")
-imageTime.innerText = minuteTime + 'min ' + secondTime + 'sec'
-})
-})
+imageTime.style.opacity = 0
 
-timeSlider2.addEventListener("click", function(){
-document.addEventListener("click", function(){
+var playButton = document.getElementById("playButton")
+playButton.style.opacity = 0
 
-var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
-var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)+2
+setTimeout(startGame, 1500)
+}
 
-var imageTime = document.getElementById("imageTime")
-imageTime.innerText = minuteTime + 'min ' + secondTime + 'sec'
+timeSlider.addEventListener("click", timeSetting1)
 
+timeSlider2.addEventListener("click", timeSetting2)
 
-})
+timeSlider.addEventListener("click", showTime)
 
-})
-console.log(minuteTime)
+timeSlider2.addEventListener("click", showTime)
+
+playButton.addEventListener("click", startpageDisappear)
 
 </script>
 
