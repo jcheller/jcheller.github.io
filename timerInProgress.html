@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    
+for (var time = ((secondTime)+(60*(minuteTime))); time>-1; ){
+setTimeout(timerTick(time), 1000*((secondTime)+(60*(minuteTime))-time))
+}
+
+
+function timerTick (){
+
+var asdf= 7
+time = time-1
+    var timer1 = document.getElementById("timer1")
+    timer1.innerText = time;
+console.log(asdf)
+}
+
+function moreShit() {
+    runWithDelay(time);
+}
+
+function timer (){
+    var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
+    var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)
+    var time = ((secondTime)+(60*(minuteTime)))
+    var counter = 1
+
+    var timer1 = document.getElementById("timer1")
+    timer1.style.opacity = 1
+    timer1.innerText = time;
+}
+
+function runWithDelay(time) {
+    if (time > 0) {
+        timerTick();
+
+        time = time-1;
+
+        setTimeout(function() {
+            runWithDelay(time);
+        }, 1000)
+    }}
+    
+</script>
+</body>
+</html>
