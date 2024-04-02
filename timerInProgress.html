@@ -12,60 +12,156 @@
             text-align: center;
             background-color: black;
             border: 2px solid white;
-            top: 85px;
-            left:1320px;
+            top: 40%;
+            left: 40%;
             font-size: 40px;
             border-radius: 10%;
-            opacity: 0;
+            opacity: 1;
+
+
         }
+
+        #totalTime{
+            width: 100px;
+            height: 50px;
+            color: white;
+            position: absolute;
+            text-align: center;
+            background-color: black;
+            border: 2px solid white;
+            top: 20%;
+            left: 80%;
+            font-size: 40px;
+            border-radius: 10%;
+        }
+
+        #plus{
+            width: 100px;
+            height: 50px;
+            color: white;
+            position: absolute;
+            text-align: center;
+            background-color: black;
+            border: 2px solid white;
+            top: 20%;
+            left: 40%;
+            font-size: 40px;
+            border-radius: 10%;
+        }
+
+
+        #reset{
+            width: 100px;
+            height: 50px;
+            color: white;
+            position: absolute;
+            text-align: center;
+            background-color: black;
+            border: 2px solid white;
+            top: 20%;
+            left: 20%;
+            font-size: 40px;
+            border-radius: 10%;
+            }
+
+    #go{
+            width: 100px;
+            height: 50px;
+            color: white;
+            position: absolute;
+            text-align: center;
+            background-color: black;
+            border: 2px solid white;
+            top: 40%;
+            left: 20%;
+            font-size: 40px;
+            border-radius: 10%;
+        }
+
+         #minus{
+            width: 100px;
+            height: 50px;
+            color: white;
+            position: absolute;
+            text-align: center;
+            background-color: black;
+            border: 2px solid white;
+            top: 20%;
+            left: 60%;
+            font-size: 40px;
+            border-radius: 10%;
+        }
+
+        body{
+            background-color: black;
+        }
+
+replace top and left with 
+    top: 85px;
+    left:1320px;
+ once done
+
     </style>
 </head>
 <body>
 
-        <div id="timer1"></div>
+        <div id="timer1">0</div>
+        <div id="minus">-</div>
+        <div id="plus">+</div>
+        <div id="reset">reset</div>
+        <div id="go">go</div>
+        <div id="totalTime">0:00</div>
 
 <script type="text/javascript">
-    
-for (var time = ((secondTime)+(60*(minuteTime))); time>-1; ){
-setTimeout(timerTick(time), 1000*((secondTime)+(60*(minuteTime))-time))
-}
-
+    var totalSeconds = 0
 
 function timerTick (){
 
 var asdf= 7
-time = time-1
-    var timer1 = document.getElementById("timer1")
-    timer1.innerText = time;
+
+totalSeconds = totalSeconds-1
+
+var timer1 = document.getElementById("timer1")
+timer1.innerText = totalSeconds;
+
 console.log(asdf)
 }
 
-function moreShit() {
-    runWithDelay(time);
+function startTimer (){
+
+var timer1 = document.getElementById("timer1")
+timer1.innerText = totalSeconds;
+
+var startNumber = totalSeconds
+
+    for (var xy = startNumber; xy >= 1; xy--) {
+        
+        setTimeout(timerTick, 1000*xy)
+    }
 }
 
-function timer (){
-    var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
-    var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)
-    var time = ((secondTime)+(60*(minuteTime)))
-    var counter = 1
+plus.addEventListener("click", function(){
+    totalSeconds = totalSeconds+1
 
-    var timer1 = document.getElementById("timer1")
-    timer1.style.opacity = 1
-    timer1.innerText = time;
-}
+    var totalTime = document.getElementById("totalTime")
+    totalTime.innerText = totalSeconds
+})
+minus.addEventListener("click", function(){
+    totalSeconds = totalSeconds-1
 
-function runWithDelay(time) {
-    if (time > 0) {
-        timerTick();
+    var totalTime = document.getElementById("totalTime")
+    totalTime.innerText = totalSeconds
+})
 
-        time = time-1;
+reset.addEventListener("click", function(){
+    totalSeconds = 0
 
-        setTimeout(function() {
-            runWithDelay(time);
-        }, 1000)
-    }}
-    
+    var totalTime = document.getElementById("totalTime")
+    totalTime.innerText = totalSeconds
+})
+
+go.addEventListener("click", startTimer)
+
 </script>
 </body>
 </html>

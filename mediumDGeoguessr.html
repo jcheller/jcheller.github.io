@@ -22,6 +22,22 @@
 			left: 0%;
 		}
 
+		#timer1{
+            width: 100px;
+            height: 50px;
+            color: white;
+            position: absolute;
+            text-align: center;
+            background-color: black;
+            border: 2px solid white;
+            top: 85px;
+            left:1320px;
+            font-size: 40px;
+            border-radius: 10%;
+            opacity: 0;
+        }
+
+
 		#controls{
 			width: 360px;
 			height: 400px;
@@ -50,8 +66,8 @@
 			left:130px;
 			opacity: 0;
 			font-size: 40px;
-			border-radius: 10%;
 			z-index: -3;
+			border-radius: 10%
 		}
 
 		#playButton{
@@ -173,16 +189,18 @@
 	<div id="photo"></div>
 	<div id="next">next</div>
 	<div id="countdown"></div>
+	<div id="timer1">0</div>
 	<div id="playButton">play</div>
 	<div id="timeSlider2"></div>
 	<div id="sliderBall2"></div>
-	<div id="imageTime">__min __sec</div>
+	<div id="imageTime">0min 0sec</div>
 
 <script type="text/javascript">
 
 var minuteTime = 0;
 var secondTime = 0;
-var time = ((secondTime)+(60*(minuteTime)))
+var test = 7;
+var totalSeconds = 0;
 var photos = ["1", "2", "3", "4", "5","6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16", "17","18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30","31", "32", "33", "34", "35", "36","37", "38", "39", "40", "41", "42","43", "44", "45", "46", "47", "48", "49", "50"]
 
 // Once we take all the images each number will be replaced with "example.png"
@@ -200,9 +218,10 @@ function timeSetting1 (event){
 var sliderBall = document.getElementById('sliderBall');
   sliderBall.style.left = event.clientX-15 + 'px';
 
-		if (parseInt(sliderBall.style.left) < 200) {
+if (parseInt(sliderBall.style.left) < 200) {
 	var sliderBall = document.getElementById("sliderBall")
 	sliderBall.style.left = "200px"
+
 }}
 
 function timeSetting2 (event){
@@ -216,10 +235,39 @@ sliderBall2.style.left = "200px"
 
 }}
 
+function timerTick (){
+
+var asdf= 7
+
+totalSeconds = totalSeconds-1
+
+var timer1 = document.getElementById("timer1")
+timer1.innerText = totalSeconds;
+
+console.log(asdf)
+}
+
+function startTimer (){
+var asdf= 7
+
+var timer1 = document.getElementById("timer1")
+timer1.innerText = totalSeconds;
+
+var startNumber = totalSeconds
+
+    for (var xy = startNumber; xy >= 1; xy--) {
+        
+        setTimeout(timerTick, 1000*xy)
+    }
+    console.log(asdf)
+
+}
+
+
 function showTime(){
 document.addEventListener("click", function(){
-var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
-var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)
+minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
+secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)
 
 var imageTime = document.getElementById("imageTime")
 imageTime.innerText = minuteTime + 'min ' + secondTime + 'sec'
@@ -289,6 +337,9 @@ function showImage (){
 // where "image" would be "example.png", one of the photos we took
 	photo.style.opacity = 1
 	photo.style.zIndex = 1
+
+	var timer1 = document.getElementById("timer1")
+	timer1.style.opacity = 1;
 }
 
 function hideImage (){
@@ -301,20 +352,25 @@ function hideImage (){
 	var next = document.getElementById("next")
 	next.style.opacity = 1
 	next.style.zIndex = 1
+
+	var timer1 = document.getElementById("timer1")
+	timer1.style.opacity = 0;
 }
 
 function game (){
-	setTimeout(countdown, 1200);
+	var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
+	var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)
+	var totalTime = 1000*((secondTime)+(60*(minuteTime)))+4200
 
-	setTimeout(showImage, 4200);
+setTimeout(countdown, 1200);
 
-var minuteTime =Math.floor((parseInt(sliderBall.style.left)-200)/54)
-var secondTime =Math.floor((parseInt(sliderBall2.style.left)-200)/5)
-var totalTime = 1000*((secondTime)+(60*(minuteTime)))+4200
+setTimeout(showImage, 4200);
+
+setTimeout(startTimer, 4200);
 
 console.log(totalTime)
 
-	setTimeout(hideImage, totalTime)
+setTimeout(hideImage, totalTime)
 }
 
 document.addEventListener("DOMContentLoaded", defineLeft)
@@ -327,7 +383,19 @@ timeSlider.addEventListener("click", showTime)
 
 timeSlider2.addEventListener("click", showTime)
 
+timeSlider.addEventListener("click", function(){
+totalSeconds = (Math.floor((parseInt(sliderBall2.style.left)-200)/5))+(60*(Math.floor((parseInt(sliderBall.style.left)-200)/54)))
+})
+
+timeSlider2.addEventListener("click", function(){
+totalSeconds = (Math.floor((parseInt(sliderBall2.style.left)-200)/5))+(60*(Math.floor((parseInt(sliderBall.style.left)-200)/54)))
+})
+
 next.addEventListener("click", game)
+
+next.addEventListener("click", function(){
+	totalSeconds = (Math.floor((parseInt(sliderBall2.style.left)-200)/5))+(60*(Math.floor((parseInt(sliderBall.style.left)-200)/54)))
+})
 
 playButton.addEventListener("click", function(){
 
