@@ -4,14 +4,29 @@
     <title></title>
 
     <style type="text/css">
+       
+#header{
+            width: 99.55%;
+            height: 60px;
+            background-color: white;
+            border: 4px solid black;
+            font-family:courier;
+            text-align:center;
+            color:black;
+            font-size:42px;
+            position: absolute;
+            top: 0px;
+            left: 0%;
+        }
+
         #timer1{
             width: 100px;
             height: 50px;
-            color: white;
+            color: black;
             position: absolute;
             text-align: center;
-            background-color: black;
-            border: 2px solid white;
+            background-color: white;
+            border: 2px solid black;
             top: 40%;
             left: 40%;
             font-size: 40px;
@@ -24,11 +39,11 @@
         #totalTime{
             width: 100px;
             height: 50px;
-            color: white;
+            color: black;
             position: absolute;
             text-align: center;
-            background-color: black;
-            border: 2px solid white;
+            background-color: white;
+            border: 2px solid black;
             top: 20%;
             left: 80%;
             font-size: 40px;
@@ -38,11 +53,11 @@
         #plus{
             width: 100px;
             height: 50px;
-            color: white;
+            color: black;
             position: absolute;
             text-align: center;
-            background-color: black;
-            border: 2px solid white;
+            background-color: white;
+            border: 2px solid black;
             top: 20%;
             left: 40%;
             font-size: 40px;
@@ -53,11 +68,11 @@
         #reset{
             width: 100px;
             height: 50px;
-            color: white;
+            color: black;
             position: absolute;
             text-align: center;
-            background-color: black;
-            border: 2px solid white;
+           background-color: white;
+            border: 2px solid black;
             top: 20%;
             left: 20%;
             font-size: 40px;
@@ -67,11 +82,11 @@
     #go{
             width: 100px;
             height: 50px;
-            color: white;
+            color: black;
             position: absolute;
             text-align: center;
-            background-color: black;
-            border: 2px solid white;
+           background-color: white;
+            border: 2px solid black;
             top: 40%;
             left: 20%;
             font-size: 40px;
@@ -81,25 +96,16 @@
          #minus{
             width: 100px;
             height: 50px;
-            color: white;
+            color: black;
             position: absolute;
             text-align: center;
-            background-color: black;
-            border: 2px solid white;
+            background-color: white;
+            border: 2px solid black;
             top: 20%;
             left: 60%;
             font-size: 40px;
             border-radius: 10%;
         }
-
-        body{
-            background-color: black;
-        }
-
-replace top and left with 
-    top: 85px;
-    left:1320px;
- once done
 
     </style>
 </head>
@@ -107,6 +113,7 @@ replace top and left with
 
         <div id="timer1">0</div>
         <div id="minus">-</div>
+        <div id="header">Timer</div>
         <div id="plus">+</div>
         <div id="reset">reset</div>
         <div id="go">go</div>
