@@ -3,7 +3,7 @@
 <head>
 	<title></title>
 	<style type="text/css">
-	#header{
+#header{
 			width: 99.55%;
 			height: 60px;
 			background-color: black;
@@ -19,7 +19,7 @@
 			#daltonbackground{
 			width: 100%;
 			height: 100%;
-			background-image:url(dalton.png);
+			background-image:url(https://cdn.glitch.global/bb540216-da78-4910-a61d-54d6b9b4b433/dalton.png?v=1712249123056);
 			background-size:contain;
 			background-color: black;
 			background-position: center;
@@ -31,29 +31,28 @@
 			z-index: -2
 		}
 			#entrance{
-			height: 129px;
-			width: 115px;
+			height: 19%;
+			width: 8.2%;
 			position:absolute;
 			background-color: none;
-			top: 439px;
-			left: 664px;
+			top: 65%;
+			left: 46%;
 			z-index: -1;
 			transition: 1.8s;
-			border-radius: 6.5%
+			border-radius: 6.5%;
 		}
-
 
 		#mousepointer{
 			width: 70px;
 			height: 70px;			
-			position:absolute;
-			background-image: url(enter.png);
+			position:fixed;
+			background-image: url(https://cdn.glitch.global/bb540216-da78-4910-a61d-54d6b9b4b433/enter.png?v=1712688222618);
 			background-size:contain;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-color: none;
-			top: 470px;
-			left: 690px;
+			top: 70%;
+			left: 47.7%;
 			transition: 3s;
 			z-index: -2
 		}
@@ -69,11 +68,11 @@
 			background-color: green;
 			border:6px solid darkgreen;
 			top: 350px;
-			left: -28%;
+			left: 0%;
 			transition: 2s;
 			opacity: 0;
 			border-radius: 10%;
-			z-index:-1;
+			z-index:-3;
 		}
 
 		#medium{
@@ -86,12 +85,12 @@
 			position:absolute;
 			background-color: yellow;
 			border:6px solid rgb(161, 155, 0);
-			top: -251.5px;
+			top: 0%;
 			left: 656px;
 			transition: 2s;
 			opacity: 0;
 			border-radius: 10%;
-			z-index: -1
+			z-index: -3;
 		}
 
 		#hard{
@@ -105,11 +104,11 @@
 			background-color: red;
 			border:6px solid darkred;
 			top: 350px;
-			left: 162.8%;
+			left: 90%;
 			transition: 2s;
 			opacity: 0;
 			border-radius: 10%;
-			z-index: -1
+			z-index: -3
 		}
 
 		#difficulty{
@@ -122,7 +121,7 @@
 			font-family: courier;
 			background-color: none;
 			position:absolute;
-			top: 1000px;
+			top: 90%;
 			left: 422px;
 			opacity: 0;
 			z-index: -1;
@@ -143,59 +142,114 @@
 
 	<script type="text/javascript">
 
-function shade (){
-	var entrance = document.getElementById("entrance")
-	entrance.style.opacity = "0.75"
-	entrance.style.backgroundColor = "black"
-
+function shade() {
+  var entrance = document.getElementById("entrance");
+  entrance.style.opacity = "0.75";
+  entrance.style.backgroundColor = "black";
+  entrance.style.transition = "2s"
+  
 }
-function noShade (){
-var entrance = document.getElementById("entrance")
-	entrance.style.opacity = "0"
-	entrance.style.backgroundColor = "none"
-}
-
-entrance.addEventListener("mouseover", shade)
-
-entrance.addEventListener("mouseout", noShade)
-
-function selectDifficulty (){
-transition = "3"
-
-var entrance = document.getElementById("entrance")
-	entrance.removeEventListener("mouseover", shade)
-	entrance.removeEventListener("mouseout", noShade)
-	entrance.style.opacity = "0.75"
-	entrance.style.zIndex = "-1.5"
-	entrance.style.top = "116px"
-	entrance.style.left = "340px"
-	entrance.style.width = "760px"
-	entrance.style.height = "500px"
-	entrance.style.borderRadius = "10%"
-	
-
-	var mousepointer = document.getElementById("mousepointer")	
-	mousepointer.style.opacity = "0"	
-
-	var easy = document.getElementById("easy")	
-	easy.style.opacity = "0.85"
-	easy.style.left = "28%"
-
-	var medium = document.getElementById("medium")	
-	medium.style.opacity = "0.85"
-	medium.style.top = "251.5px"
-
-	var hard = document.getElementById("hard")	
-	hard.style.opacity = "0.85"
-	hard.style.left = "62.8%"
-
-	var difficulty = document.getElementById("difficulty")	
-	difficulty.style.opacity = "1"
-	difficulty.style.zIndex = "-1"
-	difficulty.style.top = "480px"	
+function noShade() {
+  var entrance = document.getElementById("entrance");
+  entrance.style.opacity = "0";
+  entrance.style.backgroundColor = "none";
 }
 
-entrance.addEventListener("click", selectDifficulty)
+function release(){
+  
+  var entrance = document.getElementById("entrance");
+  entrance.addEventListener("mouseover", shade);
+  entrance.addEventListener("mouseout", noShade);
+entrance.style.transition = "1s"
+  entrance.style.opacity = "0";
+  entrance.style.zIndex = "-1";
+  entrance.style.top = "65%";
+  entrance.style.left = "46%";
+  entrance.style.width = "8.2%";
+  entrance.style.height = "19%";
+  entrance.style.borderRadius = "6.5%";
+  
+    var mousepointer = document.getElementById("mousepointer");
+mousepointer.style.opacity = "1";
+  
+  var easy = document.getElementById("easy");
+easy.style.transition = "1s"
+easy.style.opacity = "0";
+  easy.style.left = "0%";
+  easy.style.zIndex = "-3";
+  
+  var medium = document.getElementById("medium");
+ medium.style.transition = "1s"
+ medium.style.opacity = "0";
+  medium.style.top = "0%";
+  medium.style.zIndex = "-3";
+
+  var hard = document.getElementById("hard");
+ hard.style.transition = "1s"
+hard.style.opacity = "0";
+  hard.style.left = "90%";
+  hard.style.zIndex = "-3";
+  
+  var difficulty = document.getElementById("difficulty");
+difficulty.style.transition = "1s"
+difficulty.style.opacity = "0";
+  difficulty.style.zIndex = "-3";
+  difficulty.style.top = "90%";
+
+  
+}
+
+daltonbackground.addEventListener("mouseover", release)
+
+entrance.addEventListener("mouseover", shade);
+
+entrance.addEventListener("mouseout", noShade);
+
+function selectDifficulty() {
+  transition = "3";
+
+  var entrance = document.getElementById("entrance");
+  entrance.removeEventListener("mouseover", shade);
+  entrance.removeEventListener("mouseout", noShade);
+       entrance.style.transition = "2s"
+ entrance.style.opacity = "0.75";
+  entrance.style.zIndex = "-1.5";
+  entrance.style.top = "116px";
+  entrance.style.left = "340px";
+  entrance.style.width = "760px";
+  entrance.style.height = "500px";
+  entrance.style.borderRadius = "10%";
+
+  var mousepointer = document.getElementById("mousepointer");
+        mousepointer.style.transition = "2s"
+  mousepointer.style.opacity = "0";
+
+  var easy = document.getElementById("easy");
+   easy.style.transition = "2s"
+easy.style.opacity = "0.85";
+  easy.style.left = "28%";
+  easy.style.zIndex = "1";
+
+  var medium = document.getElementById("medium");
+  medium.style.transition = "2s"
+medium.style.opacity = "0.85";
+  medium.style.top = "251.5px";
+  medium.style.zIndex = "1";
+
+  var hard = document.getElementById("hard");
+   hard.style.transition = "2s"
+ hard.style.opacity = "0.85";
+  hard.style.left = "62.8%";
+  hard.style.zIndex = "1";
+
+  var difficulty = document.getElementById("difficulty");
+   difficulty.style.transition = "2s"
+ difficulty.style.opacity = "1";
+  difficulty.style.zIndex = "-1";
+  difficulty.style.top = "480px";
+}
+
+entrance.addEventListener("click", selectDifficulty);
 
 
 	</script>
