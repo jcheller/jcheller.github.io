@@ -3,6 +3,18 @@
 <head>
 	<title></title>
 	<style type="text/css">
+#logo{
+  		background-image:url(daltonLogo.png);
+  		background-size: contain;
+  		background-repeat: no-repeat;
+  		background-position: center;
+      	width: 100%;
+		height: 120px;
+		position: absolute;
+		top: 0px;
+		left: 0%;
+}
+
 #header{
 			width: 99.55%;
 			height: 60px;
@@ -15,7 +27,9 @@
 			position: absolute;
 			top: 0px;
 			left: 0%;
+			
 		}
+
 			#daltonbackground{
 			width: 100%;
 			height: 100%;
@@ -31,7 +45,7 @@
 			z-index: -2
 		}
 			#entrance{
-			height: 19%;
+			height: 19.2%;
 			width: 8.2%;
 			position:absolute;
 			background-color: none;
@@ -131,7 +145,7 @@
 	</style>
 </head>
 <body>
-<div id="header"> Dalton Geoguessr - By Cole S. & Jonah H.</div>
+<div id="logo"></div>
 	<div id="daltonbackground"></div>
 	<div id="entrance"></div>
 	<a href="easyDGeoguessr.html"><div id="easy">easy</div></a>
@@ -166,7 +180,7 @@ entrance.style.transition = "1s"
   entrance.style.top = "65%";
   entrance.style.left = "46%";
   entrance.style.width = "8.2%";
-  entrance.style.height = "19%";
+  entrance.style.height = "19.2%";
   entrance.style.borderRadius = "6.5%";
   
     var mousepointer = document.getElementById("mousepointer");
