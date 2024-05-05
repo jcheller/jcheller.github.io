@@ -422,10 +422,13 @@
 </style>
 </head>
 <body>
-
-<div id="header">Dalton Geoguessr - easy</div>
 <div id="controls">controls</div>
 <div id="slider"></div>
+<div id="handle"></div>
+<div id="photo"></div>
+<div id="countdown"></div>
+<div id="slider2"></div>
+<div id="handle2"></div>
 <div id="body"></div>
 <div id="plus">+</div>
 <div id="minus">-</div>
@@ -433,10 +436,13 @@
 <div id="roundTag">rounds</div>
 <div id="min">min</div>
 <div id="sec">sec</div>
-<div id="handle"></div>
 <div id="rounds">rounds:<br>X/XX</div>
 <div id="score">score:<br>XXXX</div>
-<div id="photo"></div>
+<div id="next">next</div>
+<div id="timer1">0</div>
+<div id="playButton">play</div>
+<div id="playTime">0min 0sec</div>
+<div id="header">Dalton Geoguessr - easy</div>
 <div id="guessing">
 <div id="guessingBackground"></div>
 <div id="box1" class= "shadeBoxes"></div>
@@ -454,13 +460,6 @@
 <div id="box13" class= "shadeBoxes"></div>
 <div id="box14" class= "shadeBoxes"></div>
 <div id="box15" class= "shadeBoxes"></div></div>
-<div id="next">next</div>
-<div id="countdown"></div>
-<div id="timer1">0</div>
-<div id="playButton">play</div>
-<div id="slider2"></div>
-<div id="handle2"></div>
-<div id="playTime">0min 0sec</div>
 	
 <script type="text/javascript">
 
@@ -753,15 +752,6 @@ function beginGame(){
 	game();
 }
 
-divs.forEach(div => {
-
-div.addEventListener('click', function(event) {
-var guessingBackground = document.getElementById("guessingBackground")
-guessingBackground.style.transition = "1s"
-guessingBackground.style.width = "180%"
-    });
-});
-
 function shade(event) {
     var id = event.target.id;
     var box = document.getElementById(id);
@@ -786,6 +776,15 @@ handle2.addEventListener("mousedown", function(event) {
 document.addEventListener("mouseup", function() {
     isDragging = false;
     isDragging2 = false;
+});
+
+divs.forEach(div => {
+
+div.addEventListener('click', function(event) {
+var guessingBackground = document.getElementById("guessingBackground")
+guessingBackground.style.transition = "1s"
+guessingBackground.style.width = "180%"
+    });
 });
 
 plus.addEventListener("click", addRound)
