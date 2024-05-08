@@ -31,14 +31,14 @@
 
 	#controls{
 		width: 430px;
-		height: 400px;
+		height: 70%;
 		color: white;
 		position: absolute;
 		text-align: center;
 		background-color: black;
 		border: 2px solid white;
 		z-index: 1;
-		top: 150px;
+		top: 20%;
 		left:60%;
 		font-size: 40px;
 		border-radius: 10%;
@@ -139,7 +139,7 @@
 	}
 
 	#playButton{
-		width: 100px;
+		width: 24%;
 		height: 50px;
 		color: white;
 		position: absolute;
@@ -147,8 +147,38 @@
 		background-color: black;
 		border: 2px solid white;
 		z-index: 1;
-		top: 150px;
-		left:20%;
+		top: 80%;
+		left:38%;
+		font-size: 40px;
+		border-radius: 10%;
+	}
+
+	#explanation{
+		width: 48%;
+		height: 50%;
+		color: white;
+		position: absolute;
+		text-align: center;
+		background-color: black;
+		border: 2px solid white;
+		z-index: 1;
+		top: 40%;
+		left:5%;
+		font-size: 40px;
+		border-radius: 10%;
+	}
+
+	#restart{
+		width: 120px;
+		height: 50px;
+		color: white;
+		position: absolute;
+		text-align: center;
+		background-color: black;
+		border: 2px solid white;
+		z-index: -1;
+		top: 48%;
+		left:44%;
 		font-size: 40px;
 		border-radius: 10%;
 	}
@@ -467,7 +497,20 @@
 </style>
 </head>
 <body>
+<div id="photo"></div>
+<div id="body"></div>
+<div id="explanation"></div>
+<div id="countdown"></div>
+<div id="rounds">rounds:<br>X/XX</div>
+<div id="score">score:<br>XXXX</div>
+<div id="next">next</div>
+<div id="timer1">0</div>
+<div id="restart">restart</div>
+<div id="header">Dalton Geoguessr - easy</div>
+
 <div id="controls">controls
+<div id="playButton">play</div>
+<div id="error">please select a time limit before playing</div>
 <div id="plus">+</div>
 <div id="minus">-</div>
 <div id="roundIndicator">1</div>
@@ -479,15 +522,7 @@
 <div id="slider2"></div>
 <div id="handle2"></div>
 <div id="playTime">0min 0sec</div></div>
-<div id="photo"></div>
-<div id="body"></div>
-<div id="rounds">rounds:<br>X/XX</div>
-<div id="score">score:<br>XXXX</div>
-<div id="next">next</div>
-<div id="timer1">0</div>
-<div id="playButton">play</div>
-<div id="error">please select a time limit before playing</div>
-<div id="header">Dalton Geoguessr - easy</div>
+
 <div id="guessing">
 <div id="building">
 <div id="box1" class= "shadeBoxes"></div>
@@ -505,9 +540,11 @@
 <div id="box13" class= "shadeBoxes"></div>
 <div id="box14" class= "shadeBoxes"></div>
 <div id="box15" class= "shadeBoxes"></div></div>
+
 <div id="guessingBackground">
-<div id="locations">locations</div></div></div>
-<div id="countdown"></div>
+<div id="locations">locations</div></div>
+
+</div>
 	
 <script type="text/javascript">
 
@@ -523,12 +560,8 @@ var totalSeconds = 0;
 var roundsPlayed = 0;
 var totalRounds = 1;
 var answer = 0
-var handle = document.getElementById("handle");
-var slider = document.getElementById("slider");
 var isDragging = false;
 var offsetX = 0;
-var handle2 = document.getElementById("handle2");
-var slider2 = document.getElementById("slider2");
 var isDragging2 = false;
 var offsetX2 = 0;
 var controlsSet = 0
@@ -637,32 +670,11 @@ if (secondTime > 59) {
 function startpageDisappear(){
 
 var controls = document.getElementById("controls")
-var slider = document.getElementById("slider")
-var slider2 = document.getElementById("slider2")
-var handle2 = document.getElementById("handle2")
-var handle = document.getElementById("handle")
-var playTime = document.getElementById("playTime")
+
 var playButton = document.getElementById("playButton")
 
-controls.style.opacity = 0
 controls.style.zIndex = -1
 
-slider.style.opacity = 0
-slider.style.zIndex = -1
-
-slider2.style.opacity = 0
-slider2.style.zIndex = -1
-
-handle2.style.opacity = 0
-handle2.style.zIndex = -1
-
-handle.style.opacity = 0
-handle.style.zIndex = -1
-
-playTime.style.opacity = 0
-playTime.style.zIndex = -1
-
-playButton.style.opacity = 0
 playButton.style.zIndex = -1
 
 }
@@ -683,13 +695,11 @@ var rounds = document.getElementById("rounds")
 var guessingBackground = document.getElementById("guessingBackground")
 var locations = document.getElementById("locations")
 
-	next.style.opacity = 0
 	next.style.zIndex = -1
 
 	locations.style.opacity = 0
 	locations.style.zIndex = -2
 
-	playButton.style.opacity = 0
 	playButton.style.zIndex = -1
 
 	countdown.style.opacity = 1;
@@ -815,7 +825,7 @@ function game (){
 	var minuteTime =Math.floor((parseInt(handle.style.left)-85)/50)
 	var secondTime =Math.floor((parseInt(handle2.style.left)-85)/4.5)
 	var totalTime = 1000*((secondTime)+(60*(minuteTime)))+3000
-  
+
 countdown();
 
 trackRounds();   
@@ -838,11 +848,71 @@ var countdown = document.getElementById("countdown")
 	countdown.style.opacity = "1"
 	countdown.style.zIndex = "1"
 	countdown.style.width = "99.7%"
-	countdown.style.height = "99.2%"
+	countdown.style.height = "99.4%"
 	countdown.style.top = "0%"
 	countdown.style.left = "0%"
 	countdown.style.borderRadius = "1%"
 	countdown.style.fontSize = "90px"
+
+var score = document.getElementById("score")
+score.style.zIndex = "-1"
+
+var rounds = document.getElementById("rounds")
+rounds.style.zIndex = "-1"
+
+var guessing = document.getElementById("guessing")
+guessing.style.zIndex = "-1"
+
+var next = document.getElementById("next")
+next.innerText = "next"
+next.style.zIndex = "-1"
+
+var restart = document.getElementById("restart")
+restart.style.zIndex = "1"
+
+var header = document.getElementById("header")
+header.style.zIndex = "-1"
+}
+
+function newGame(){
+minuteTime = 0 
+secondTime = 0 
+sum = minuteTime+secondTime
+test = 7;
+totalSeconds = 0;
+roundsPlayed = 0;
+totalRounds = 1;
+answer = 0
+isDragging = false;
+offsetX = 0;
+isDragging2 = false;
+offsetX2 = 0;
+controlsSet = 0
+
+var restart = document.getElementById("restart")
+restart.style.zIndex = "-1"
+
+var playButton = document.getElementById("playButton")
+playButton.style.zIndex = "1"
+
+var controls = document.getElementById("controls")
+controls.style.zIndex = "1"
+
+var countdown = document.getElementById("countdown")
+countdown.style.width = "150px"
+countdown.style.height = "150px"
+countdown.style.fontSize = "120px"
+countdown.style.top = "40%"
+countdown.style.left = "44%"
+countdown.style.borderRadius = "10%"
+countdown.innerText = "1"
+countdown.style.zIndex = "-1"
+
+var header = document.getElementById("header")
+header.style.zIndex = "1"
+
+var roundIndicator = document.getElementById("roundIndicator")
+roundIndicator.innerText = "1"
 }
 
 handle.addEventListener("mousedown", function(event) {
@@ -885,7 +955,7 @@ if (minuteTime+secondTime < 1) {
 }
 })
 
-
+restart.addEventListener("click", newGame)
 plus.addEventListener("click", addRound)
 minus.addEventListener("click", subtractRound)
 next.addEventListener("click", game)
