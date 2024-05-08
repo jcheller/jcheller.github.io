@@ -31,14 +31,14 @@
 
 	#controls{
 		width: 430px;
-		height: 70%;
+		height: 77.5%;
 		color: white;
 		position: absolute;
 		text-align: center;
 		background-color: black;
 		border: 2px solid white;
 		z-index: 1;
-		top: 20%;
+		top: 16.5%;
 		left:60%;
 		font-size: 40px;
 		border-radius: 10%;
@@ -148,24 +148,40 @@
 		border: 2px solid white;
 		z-index: 1;
 		top: 80%;
-		left:38%;
+		left:31.5%;
 		font-size: 40px;
 		border-radius: 10%;
 	}
 
 	#explanation{
-		width: 48%;
-		height: 50%;
+		width: 175%;
+		height: 100%;
+		color: white;
+		position: absolute;
+		text-align: left;
+		background-color: black;
+		border: 2px solid white;
+		z-index: 1;
+		text
+		margin-left: 10px;
+		top: 0%;
+		left:-187.5%;
+		font-size: 25px;
+		border-radius: 10%;
+	}
+
+	#explanationHeader{
+		width: 160%;
+		height: 0.0001%;
 		color: white;
 		position: absolute;
 		text-align: center;
 		background-color: black;
-		border: 2px solid white;
 		z-index: 1;
-		top: 40%;
-		left:5%;
+		top: 1%;
+		left:-180%;
 		font-size: 40px;
-		border-radius: 10%;
+		border-radius: 20%;
 	}
 
 	#restart{
@@ -189,11 +205,11 @@
 		color: white;
 		position: absolute;
 		text-align: center;
-		background-color: black;
+		background-color: none;
 		z-index: -1;
 		opacity: 0;
-		top: 220px;
-		left:18.5%;
+		top: 81%;
+		left:58%;
 		font-size: 16px;
 		border-radius: 10%;
 	}
@@ -360,6 +376,12 @@
 
 	}
 
+	.margin{
+		margin-left: 40px;
+		margin-right: 25px;
+	}
+
+
 	#guessingBackground{
 		width:350px;
 		height: 550px;
@@ -499,7 +521,6 @@
 <body>
 <div id="photo"></div>
 <div id="body"></div>
-<div id="explanation"></div>
 <div id="countdown"></div>
 <div id="rounds">rounds:<br>X/XX</div>
 <div id="score">score:<br>XXXX</div>
@@ -509,6 +530,12 @@
 <div id="header">Dalton Geoguessr - easy</div>
 
 <div id="controls">controls
+<div id="explanation"> <p class="margin"> 
+ <br> - Welcome to Dalton Geoguessr! Try to guess the room number of the image shown
+<br> - You'll get 100 points for guessing the exact room, and 50 points for guessing the right floor <br> - This is easy mode, so the images will be wide angles of an entire room, but on harder modes, you may only get to see a small portion of a room <br> - You'll have as much time as you want to enter an answer, during and after the image being shown <br> - Give yourself ample time to analyze the images at first, but try lowering the time settings to challenge yourself to identify rooms from just a glimpse <br> - We recommend 5 or 10 rounds, and play with a friend to see who knows Dalton better
+</p>
+</div>
+<div id="explanationHeader">Guide & Rules</div>
 <div id="playButton">play</div>
 <div id="error">please select a time limit before playing</div>
 <div id="plus">+</div>
