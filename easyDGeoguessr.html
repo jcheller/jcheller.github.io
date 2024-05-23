@@ -696,6 +696,7 @@ var playerFloor = "0"
 var playerScore = 0;
 var roundScore = 0
 var xy = 0
+var correctQuestions = 0
 
 function defineLeft (){
 	var handle = document.getElementById('handle');
@@ -943,6 +944,7 @@ photo.style.opacity = 0
 
 photos.splice(randomNumber, 1)
 answers.splice(randomNumber, 1)
+floors.splice(randomNumber, 1)
 
 console.log("hideImage")
 }
@@ -967,6 +969,7 @@ stopCheck = stopCheck+1
 	if (playerAnswer == answer) {
 		roundScore = roundScore+400
 		exactRoomScore = 400
+		correctQuestions = correctQuestions+1
 	}
 
 playerScore = playerScore + roundScore
@@ -991,7 +994,21 @@ scoreCard.style.zIndex = 1
 scoreCard.innerHTML =  "<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your answer: " + playerAnswer+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct answer: " +answer+ "<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;round completed: +50<br>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+(Math.abs(playerFloor-floor)) + "&nbsp;floors away: +" + closeFloorScore + "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct floor: +" + exactFloorScore + "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct room: +" + exactRoomScore +"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total round score: " + roundScore +"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; overall score: "+playerScore
 
 var score = document.getElementById("score")
-score.innerHTML = "score<br>"+playerScore
+score.innerHTML = "score:<br>"+playerScore
+}
+
+function endScore (){
+	console.log("endscore")
+	var cardHeader = document.getElementById("cardHeader")
+cardHeader.style.zIndex = 2
+cardHeader.innerHTML = "final&nbsp;score"
+cardHeader.style.top = "25%"
+
+var scoreCard = document.getElementById("scoreCard")
+scoreCard.style.zIndex = 2
+scoreCard.innerHTML =  "<br><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct rooms: "+correctQuestions+"/"+totalRounds+"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your score: "+playerScore+"<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maximum possible points: "+(totalRounds*1000)+"<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skill score: "+ ((playerScore/(totalRounds*1000))*100)+"%"
+scoreCard.style.height = "65%"
+scoreCard.style.top = "25%"
 }
 
 function trackRounds(){
@@ -1043,7 +1060,7 @@ function game (){
 countdown();
 
 trackRounds();   
-  
+
 setTimeout(showImage, 3000);
 
 setTimeout(startTimer, 3000);
@@ -1057,9 +1074,8 @@ setInterval(tryToHide, 1)
 }
 ///////
 function endGame(){
-  console.log("endgame")
-	hideImage();
-  
+hideImage();
+endScore();
 var countdown = document.getElementById("countdown")
 	countdown.innerText = "thanks for playing";
 	countdown.style.opacity = "1"
