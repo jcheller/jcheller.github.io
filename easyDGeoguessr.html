@@ -210,16 +210,16 @@
 		border-radius: 20%;
 	}
 	#restart{
-		width: 120px;
-		height: 100px;
+		width: 240px;
+		height: 55px;
 		color: white;
 		position: absolute;
 		text-align: center;
 		background-color: black;
-		border: 2px solid white;
+		border: 2px solid green;
 		z-index: -1;
-		top: 48%;
-		left:44%;
+		top: 80.5%;
+		left:40%;
 		font-size: 40px;
 		border-radius: 10%;
 	}
@@ -833,8 +833,9 @@ stopCheck = 0;
 playerFloor = 0;
 playerAnswer = 0;
 roundScore = 0
-//xy = 0
-//totalSeconds = 0
+
+clearOptions();
+
 rng = Math.random()
 randomNumber = Math.floor(photos.length*rng)
 var image = photos[randomNumber];
@@ -1006,7 +1007,7 @@ cardHeader.style.top = "25%"
 
 var scoreCard = document.getElementById("scoreCard")
 scoreCard.style.zIndex = 2
-scoreCard.innerHTML =  "<br><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct rooms: "+correctQuestions+"/"+totalRounds+"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your score: "+playerScore+"<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maximum possible points: "+(totalRounds*1000)+"<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skill score: "+ ((playerScore/(totalRounds*1000))*100)+"%"
+scoreCard.innerHTML =  "<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct rooms: "+correctQuestions+"/"+totalRounds+"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your score: "+playerScore+"<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maximum possible points: "+(totalRounds*1000)+"<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skill score: "+ Math.round((playerScore/(totalRounds*1000))*100)+"%"
 scoreCard.style.height = "65%"
 scoreCard.style.top = "25%"
 }
@@ -1101,7 +1102,7 @@ next.innerText = "next"
 next.style.zIndex = "-1"
 
 var restart = document.getElementById("restart")
-restart.style.zIndex = "1"
+restart.style.zIndex = "2"
 
 var header = document.getElementById("header")
 header.style.zIndex = "-1"
@@ -1114,12 +1115,14 @@ sum = minuteTime+secondTime
 totalSeconds = 0;
 roundsPlayed = 0;
 totalRounds = 1;
-answer = 0
+answer = 0;
 isDragging = false;
 offsetX = 0;
 isDragging2 = false;
 offsetX2 = 0;
-controlsSet = 0
+controlsSet = 0;
+playerScore = 0;
+playerAnswer = 0;
 
 photos = ["203E.png", "205E.png", "212E.png", "3E.png", "401E.png", "501E.png", "502E.png", "504E.png", "505E.png",  "1101E.png", "1103E.png", "1106E.png", "1204E.png", "1206E.png", "13E.png", "1402E.png", "1403E.png", "1405E.png", "1406E.png", "1407E.png"]
 answers = ["203", "205", "212", "3", "401", "501", "502", "504", "505", "1101", "1103", "1106", "1204", "1206", "13", "1402", "1403", "1405", "1406", "1407"]
