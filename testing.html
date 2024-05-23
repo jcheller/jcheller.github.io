@@ -156,46 +156,13 @@
 		background-color: black;
 		border: 2px solid white;
 		z-index: 1;
+		text
 		margin-left: 10px;
 		top: 0%;
 		left:-187.5%;
 		font-size: 25px;
 		border-radius: 10%;
 	}
-	#scoreCard{
-		width: 50%;
-		height: 77.5%;
-		color: white;
-		position: absolute;
-		text-align: left;
-		background-color: black;
-		border: 2px solid white;
-		margin-right: 10%;
-		z-index: -1;
-		top: 16.5%;
-		left:22.5%;
-		font-size: 35px;
-		border-radius: 10%;
-	}
-	#cardHeader{
-		width: 45%;
-		height: 10%;
-		color: white;
-		position: absolute;
-		text-align: center;
-		background-color: black;
-		margin-top: 1%;
-		z-index: -1;
-		top: 16.5%;
-		left:25%;
-		font-size: 45px;
-		border-radius: 10%;
-	}
-	.cardMargin{
-		margin-left: 50px;
-	}
-
-
 	#explanationHeader{
 		width: 160%;
 		height: 0.0001%;
@@ -511,7 +478,6 @@
 	background-color: none;
 	color: white;
 	font-size: 28.5px;
-	text-align: center;
 	opacity: 0;
 	border-radius:10%;
 		}
@@ -596,8 +562,6 @@
 <body>
 <div id="photo"></div>
 <div id="body"></div>
-<div id="scoreCard"></div>
-<div id="cardHeader"></div>
 <div id="countdown"></div>
 <div id="rounds">rounds:<br>X/XX</div>
 <div id="score">score:<br>XXXX</div>
@@ -610,7 +574,8 @@
 <div id="explanation"> <p class="margin"> 
  <br> - Welcome to Dalton Geoguessr! Try to guess the room number of the image shown
 <br> - You'll get 100 points for guessing the exact room, and 50 points for guessing the right floor <br> - This is easy mode, so the images will be wide angles of an entire room, but on harder modes, you may only get to see a small portion of a room <br> - You'll have as much time as you want to enter an answer, during and after the image being shown <br> - Give yourself ample time to analyze the images at first, but try lowering the time settings to challenge yourself to identify rooms from just a glimpse <br> - We recommend 5 or 10 rounds, and play with a friend to see who knows Dalton better
-</p></div>
+</p>
+</div>
 <div id="explanationHeader">Guide & Rules</div>
 <div id="playButton">play</div>
 <div id="error">please select a time limit before playing</div>
@@ -670,10 +635,7 @@ var floors = ["2", "2", "2", "3", "4", "5", "5", "5", "5", "11", "11", "11", "12
 var minuteTime = 0;
 var secondTime = 0;
 var sum = minuteTime+secondTime;
-var hideImageCheck = 0;
-var timerCheck = 0;
-var stopCheck = 0
-var totalTime = 0; 
+var test = 7;
 var totalSeconds = 0;
 var roundsPlayed = 0;
 var totalRounds = 1;
@@ -693,9 +655,6 @@ var four = 0;
 var five = 0;
 var playerAnswer = "0"
 var playerFloor = "0"
-var playerScore = 0;
-var roundScore = 0
-var xy = 0
 
 function defineLeft (){
 	var handle = document.getElementById('handle');
@@ -814,7 +773,6 @@ function beginGame(){
 	game();
 }
 ////////
-
 function countdown() {
 
 var next = document.getElementById("next")
@@ -826,14 +784,6 @@ var rounds = document.getElementById("rounds")
 var guessingBackground = document.getElementById("guessingBackground")
 var locations = document.getElementById("locations")
 var photo = document.getElementById("photo")
-hideImageCheck = 0
-timerCheck = 0;
-stopCheck = 0;
-playerFloor = 0;
-playerAnswer = 0;
-roundScore = 0
-//xy = 0
-//totalSeconds = 0
 rng = Math.random()
 randomNumber = Math.floor(photos.length*rng)
 var image = photos[randomNumber];
@@ -848,13 +798,7 @@ floor = floors[randomNumber]
 
 photo.style.backgroundImage = "url("+ image	+")"
 
-var scoreCard = document.getElementById("scoreCard")
-scoreCard.style.zIndex = -1
-
-var cardHeader = document.getElementById("cardHeader")
-cardHeader.style.zIndex = -1
-
-next.style.zIndex = -1
+	next.style.zIndex = -1
 
 	locations.style.opacity = 0
 	locations.style.zIndex = -2
@@ -890,27 +834,21 @@ setTimeout(function() {
     }
 /////////
 function timerTick (){
-if(stopCheck < 1){
-console.log("timertick")
 totalSeconds = totalSeconds-1
+
 var timer1 = document.getElementById("timer1")
 timer1.innerText = totalSeconds;
-}
 }
 
 function startTimer (){
-console.log("timerStarted")
 defineTotalSeconds();
+
 var timer1 = document.getElementById("timer1")
 timer1.innerText = totalSeconds;
 
-for (xy = totalSeconds; xy >= 1; xy--) {
+for (var xy = totalSeconds; xy >= 1; xy--) {
     setTimeout(timerTick, 1000*xy)
     }
-}
-
-function checkTimer (){
-	timerCheck = timerCheck+1
 }
 
 function showImage (){
@@ -936,62 +874,20 @@ function showImage (){
 }
 
 function hideImage (){
-hideImageCheck = hideImageCheck+1
-
-var photo = document.getElementById("photo")
-photo.style.opacity = 0
+	var photo = document.getElementById("photo")
+	var next = document.getElementById("next")
+	var timer1 = document.getElementById("timer1")
 
 photos.splice(randomNumber, 1)
 answers.splice(randomNumber, 1)
 
-console.log("hideImage")
-}
+	photo.style.opacity = 0
 
-function scoring (){
-var closeFloorScore = 0
-var exactFloorScore = 0
-var exactRoomScore = 0
-xy = 0
-totalSeconds = 0
-stopCheck = stopCheck+1
-	roundScore=roundScore+50
-
-	if (Math.abs(playerFloor-floor)<2) {
-		roundScore=roundScore+250
-		closeFloorScore = 250
-	}
-	if (playerFloor == floor) {
-		roundScore = roundScore+300
-		exactFloorScore = 300
-	}
-	if (playerAnswer == answer) {
-		roundScore = roundScore+400
-		exactRoomScore = 400
-	}
-
-playerScore = playerScore + roundScore
-
-var guessing = document.getElementById("guessing")
-guessing.style.zIndex = -1
-
-var next = document.getElementById("next")
-next.style.zIndex = 1
+	next.style.zIndex = 1
 	next.style.opacity = 1
 	next.style.top = "12%"
 
-var timer1 = document.getElementById("timer1")
 	timer1.style.zIndex = -1;
-
-var cardHeader = document.getElementById("cardHeader")
-cardHeader.style.zIndex = 1
-cardHeader.innerHTML = "round&nbsp;"+roundsPlayed+"&nbsp;score"
-
-var scoreCard = document.getElementById("scoreCard")
-scoreCard.style.zIndex = 1
-scoreCard.innerHTML =  "<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;your answer: " + playerAnswer+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct answer: " +answer+ "<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;round completed: +50<br>"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+(Math.abs(playerFloor-floor)) + "&nbsp;floors away: +" + closeFloorScore + "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct floor: +" + exactFloorScore + "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;correct room: +" + exactRoomScore +"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total round score: " + roundScore +"<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; overall score: "+playerScore
-
-var score = document.getElementById("score")
-score.innerHTML = "score<br>"+playerScore
 }
 
 function trackRounds(){
@@ -1022,23 +918,11 @@ function noShade(event) {
     var box = document.getElementById(id);
     box.style.opacity = "0";
 }
-
-function tryToHide(){
-	if(timerCheck > 0){
-	if(hideImageCheck < 1){
-	if (totalSeconds < 1) {
-			console.log("testing123")
-
-	hideImage();
-}
-}
-}
-}
 //////
 function game (){
-	 minuteTime =Math.floor((parseInt(handle.style.left)-85)/50)
-	 secondTime =Math.floor((parseInt(handle2.style.left)-85)/4.5)
-	 totalTime = 1000*((secondTime)+(60*(minuteTime)))+3000
+	var minuteTime =Math.floor((parseInt(handle.style.left)-85)/50)
+	var secondTime =Math.floor((parseInt(handle2.style.left)-85)/4.5)
+	var totalTime = 1000*((secondTime)+(60*(minuteTime)))+3000
 
 countdown();
 
@@ -1050,14 +934,11 @@ setTimeout(startTimer, 3000);
 
 console.log(totalTime + "totalTime")
 
-setTimeout(checkTimer, 4000)
-
-setInterval(tryToHide, 1)
-
+setTimeout(hideImage, totalTime)
 }
 ///////
 function endGame(){
-  console.log("endgame")
+  
 	hideImage();
   
 var countdown = document.getElementById("countdown")
@@ -1095,6 +976,7 @@ function newGame(){
 minuteTime = 0 
 secondTime = 0 
 sum = minuteTime+secondTime
+test = 7;
 totalSeconds = 0;
 roundsPlayed = 0;
 totalRounds = 1;
@@ -1107,7 +989,6 @@ controlsSet = 0
 
 photos = ["203E.png", "205E.png", "212E.png", "3E.png", "401E.png", "501E.png", "502E.png", "504E.png", "505E.png",  "1101E.png", "1103E.png", "1106E.png", "1204E.png", "1206E.png", "13E.png", "1402E.png", "1403E.png", "1405E.png", "1406E.png", "1407E.png"]
 answers = ["203", "205", "212", "3", "401", "501", "502", "504", "505", "1101", "1103", "1106", "1204", "1206", "13", "1402", "1403", "1405", "1406", "1407"]
-floors = ["2", "2", "2", "3", "4", "5", "5", "5", "5", "11", "11", "11", "12", "12", "13", "14", "14", "14", "14", "14"]
 
 var restart = document.getElementById("restart")
 restart.style.zIndex = "-1"
@@ -1195,8 +1076,7 @@ function clearOptions(){
 
 clearing.forEach(div => {
     div.innerText = "  ";
-    div.style.border = "1px solid white"
-    div.classList.remove("selected") 
+    div.style.border = "1px solid white" 
 });
 }
 function clearBorder(){
@@ -1211,112 +1091,87 @@ const highlight = document.querySelectorAll("div.option")
 highlight.forEach(div => {
 	div.addEventListener("click", function(){
 		clearBorder();
-		if(div.classList.contains("selected")){
 		div.style.border = "2px solid green"
-		playerAnswer = div.innerText
-		}
 	})
 })
 
 ///////
 function setFloor2(){
 clearOptions();
-playerFloor = 2
+
 var option1 = document.getElementById("option1")
 option1.innerText = "203"
-option1.classList.add("selected")
 var option2 = document.getElementById("option2")
 option2.innerText = "205"
-option2.classList.add("selected")
 var option3 = document.getElementById("option3")
 option3.innerText = "212"
-option3.classList.add("selected")
 }
 
 function setFloor3(){
 clearOptions();
-playerFloor = 3
+
 var option1 = document.getElementById("option1")
 option1.innerText = "3"
-option1.classList.add("selected")
 }
 function setFloor4(){
 clearOptions();
-playerFloor = 4
+
 var option1 = document.getElementById("option1")
 option1.innerText = "401"
-option1.classList.add("selected")
 }
 function setFloor5(){
 clearOptions();
-playerFloor = 5
+
 var option1 = document.getElementById("option1")
 option1.innerText = "501"
-option1.classList.add("selected")
 var option2 = document.getElementById("option2")
 option2.innerText = "502"
-option2.classList.add("selected")
 var option3 = document.getElementById("option3")
 option3.innerText = "504"
-option3.classList.add("selected")
 var option4 = document.getElementById("option4")
 option4.innerText = "505"
-option4.classList.add("selected")
 
 }
 function setFloor11(){
 clearOptions();
-playerFloor = 11
+
 var option1 = document.getElementById("option1")
 option1.innerText = "1101"
-option1.classList.add("selected")
 var option2 = document.getElementById("option2")
 option2.innerText = "1103"
-option2.classList.add("selected")
 var option3 = document.getElementById("option3")
 option3.innerText = "1106"
-option3.classList.add("selected")
 }
 
 function setFloor12(){
 clearOptions();
-playerFloor = 12
+
 var option1 = document.getElementById("option1")
 option1.innerText = "1204"
-option1.classList.add("selected")
 var option2 = document.getElementById("option2")
 option2.innerText = "1206"
-option2.classList.add("selected")
 }
 function setFloor13(){
 clearOptions();
-playerFloor = 13
+
 var option1 = document.getElementById("option1")
 option1.innerText = "13"
-option1.classList.add("selected")
 }
 function setFloor14(){
 clearOptions();
-playerFloor = 14
+
 var option1 = document.getElementById("option1")
 option1.innerText = "1402"
-option1.classList.add("selected")
 var option2 = document.getElementById("option2")
 option2.innerText = "1403"
-option2.classList.add("selected")
 var option3 = document.getElementById("option3")
 option3.innerText = "1405"
-option3.classList.add("selected")
 var option4 = document.getElementById("option4")
 option4.innerText = "1406"
-option4.classList.add("selected")
 var option5 = document.getElementById("option5")
 option5.innerText = "1407"
-option5.classList.add("selected")
-
 }
-if(playerAnswer !== 0){
-submit.addEventListener("click", scoring)}
+
 restart.addEventListener("click", newGame)
 plus.addEventListener("click", addRound)
 minus.addEventListener("click", subtractRound)
