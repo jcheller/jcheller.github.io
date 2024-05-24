@@ -1107,7 +1107,7 @@ restart.style.zIndex = "2"
 var header = document.getElementById("header")
 header.style.zIndex = "-1"
 }
-//////
+/////////
 function newGame(){
 minuteTime = 0 
 secondTime = 0 
@@ -1143,12 +1143,21 @@ countdown.style.height = "150px"
 countdown.style.fontSize = "120px"
 countdown.style.top = "40%"
 countdown.style.left = "44%"
-countdown.style.borderRadius = "10%"
+countdown.style.borderRadius = "0%"
+countdown.style.border = "none"
 countdown.innerText = "1"
 countdown.style.zIndex = "-1"
 
 var header = document.getElementById("header")
 header.style.zIndex = "1"
+
+var scoreCard = document.getElementById("scoreCard")
+scoreCard.style.zIndex = "-1"
+scoreCard.style.width = "50%"
+scoreCard.style.height = "77.5%"
+
+var cardHeader = document.getElementById("cardHeader")
+cardHeader.style.zIndex = "-1"
 
 var roundIndicator = document.getElementById("roundIndicator")
 roundIndicator.innerText = "1"
