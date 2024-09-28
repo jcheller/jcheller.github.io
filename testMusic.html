@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoplay Music</title>
+</head>
+<body>
+    <audio id="background-music" src="backgroundMusic1.mp3" autoplay loop>
+        Your browser does not support the audio element.
+    </audio>
+
+    <h1>Welcome to My Website</h1>
+    <p>Enjoy the music as you browse!</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var audio = document.getElementById('background-music');
+            
+            // Check if the audio can be played
+            audio.oncanplaythrough = function () {
+                console.log('Audio can play through.');
+            };
+            
+            // Log errors
+            audio.onerror = function (e) {
+                console.error('Error loading audio file:', e);
+            };
+            
+            // Attempt to play the audio (may be blocked by autoplay policy)
+            audio.play().catch(function (error) {
+                console.log('Autoplay was prevented:', error);
+            });
+        });
+    </script>
+</body>
+</html>
