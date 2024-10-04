@@ -64,7 +64,6 @@
 			top: 0%;
 			left: 0%;
 			z-index: 2;
-			transition: 4s;
 	}
 	#body{
 		height: 100%;
@@ -83,6 +82,7 @@
 		text-align:center;
 		color:white;
 		z-index: 1;
+		opacity: 0;
 		border:3px solid white;
 		font-size:42px;
 		position: absolute;
@@ -97,7 +97,8 @@
 		text-align: center;
 		background-color: black;
 		border: 2px solid white;
-		z-index: 1;
+		z-index: -1;
+		opacity: 0;
 		top: 16.5%;
 		left:60%;
 		font-size: 40px;
@@ -635,13 +636,24 @@
 		border-radius: 10%;
     }
 
+#cover{
+		height: 19.2%;
+		width: 8.2%;
+		position:absolute;
+		background-color: black;
+		top: 65%;
+		left: 46%;
+		z-index: 2;
+		transition: 1.8s;
+		opacity: 0;
+		border-radius: 6.5%;
+	}
+
 </style>
 </head>
 <body>
-<audio id="sound1" src="backgroundMusic1.mp3"></audio>
-<audio id="sound2" src="backgroundMusic1.mp3">fix later</audio>
-<audio id="sound3" src="backgroundMusic1.mp3">fix later</audio>
-<audio id="sound4" src="backgroundMusic1.mp3">fix later</audio>
+<audio id="sound1" src="waiting.mp3"></audio>
+<audio id="sound2" src="playing.mp3"></audio>
 
 <div id="photo"></div>
 <div id="body"></div>
@@ -654,6 +666,7 @@
 <div id="timer1">0</div>
 <div id="restart">play again</div>
 <div id="header">Dalton Geoguessr</div>
+<div id="cover"></div>
 
 <div id="container">
 <div id="logo"></div>
@@ -725,8 +738,6 @@ var floors = ["2", "2", "2", "3", "4", "5", "5", "5", "5", "11", "11", "11", "12
 var minuteTime = 0;
 var secondTime = 0;
 var sum = minuteTime+secondTime;
-var hideImageCheck = 0;
-var timerCheck = 0;
 var stopCheck = 0
 var totalTime = 0; 
 var totalSeconds = 0;
@@ -753,58 +764,63 @@ var roundScore = 0
 var xy = 0
 var musicCheck = 0
 var correctQuestions = 0
-var musicDelay = 0
-var music1 = 0
-var music2 = 2
-var music3 = 2
-var music4 = 2
+var music = 1
+var hideImageCheck = 0
+var enterGameCheck = 0
 
 function startShade() {
+if(enterGameCheck < 1){
   var entrance = document.getElementById("entrance");
   entrance.style.opacity = "0.75";
   entrance.style.backgroundColor = "black";
-  entrance.style.transition = "2s"  
+  entrance.style.transition = "1.5s"  
+}
 }
 
 function startNoShade() {
-  var entrance = document.getElementById("entrance");
+if(enterGameCheck < 1){  
+	var entrance = document.getElementById("entrance");
   entrance.style.opacity = "0";
   entrance.style.backgroundColor = "none";
 }
+}	
 
-function revealGame(){
-	var container = document.getElementById("container")
-	container.style.opacity = "0"
+function enterGame(){
+	music1(true);
+	var entrance = document.getElementById('entrance')
+	entrance.style.opacity = '1'
+	entrance.style.zIndex = '4'
+	entrance.style.transition = '2s'
+	entrance.style.top = "0%";
+	entrance.style.left = "0%";	
+	entrance.style.width = "100%";
+	entrance.style.height = "100%";
 
-	setInterval(playMusic, musicDelay);
+	enterGameCheck++
 
-	setTimeout(function(){
-		container.style.transition = "0s"
-		container.style.zIndex = "-1"
-	}, 4000)
+	var controls = document.getElementById('controls')
+	controls.style.zIndex = '2'
+
+	var header = document.getElementById('header')
+		header.style.zIndex = '3'
+
+	setInterval(function(){
+	var header = document.getElementById('header')
+		header.style.opacity = '1'
+		header.style.transition = '2.5s'
+
+	var controls = document.getElementById('controls')
+	controls.style.opacity = '1'
+	controls.style.transition = '2.5s'
+}, 1500)
+
+	setInterval(function(){
+	var logo = document.getElementById('logo')
+	logo.style.opacity = '1'
+	logo.style.zIndex = '1'
+}, 2000)
 }
 
-function enterGame() {
-  transition = "3";
-
-  var entrance = document.getElementById("entrance");
-  entrance.removeEventListener("mouseover", shade);
-  entrance.removeEventListener("mouseout", noShade);
-  entrance.style.transition = "3s"
-  entrance.style.opacity = "1";
-  entrance.style.zIndex = "3";
-  entrance.style.top = "0%";
-  entrance.style.left = "0%";
-  entrance.style.width = "100%";
-  entrance.style.height = "100%";
-  entrance.style.borderRadius = "0%";
-
-  var mousepointer = document.getElementById("mousepointer");
-        mousepointer.style.transition = "3s"
-  mousepointer.style.opacity = "0";
-
-  //setTimeout(revealGame, 3000)
-  }
 
 function defineLeft (){
 	var handle = document.getElementById('handle');
@@ -814,36 +830,48 @@ function defineLeft (){
   		handle2.style.left = "85px";
 }
 
-function playMusic(){
-//	console.log("test2")
-
+function music1(startStop1){
 	var sound1 = document.getElementById("sound1")
+	sound1.volume = 0.2;
+
+	let musicInt1 = null;
+
+	if(startStop1){
+	sound1.play()
+		musicInt1 = setInterval(() => {
+			console.log('restartedmusic1')
+			if(startStop1){
+				sound1.play()
+			}
+		}, 183730)
+	}	
+	else {
+		sound1.pause()
+		clearInterval(musicInt1)
+	}
+}
+
+function music2(startStop2){
 	var sound2 = document.getElementById("sound2")
-	var sound3 = document.getElementById("sound3")
-	var sound4 = document.getElementById("sound4")
-	
-	if (music1 < 1) {
-//		console.log("test3")
-		sound1.play()
-		musicDelay = 32000
+	sound2.volume = 0.6;
+
+	let musicInt2 = null;
+
+	if(startStop2){
+	sound2.play()
+		musicInt2 = setInterval(() => {
+			console.log('restartedmusic2')
+			if(startStop2){
+				sound2.play()
+			}
+		}, 162140)
+	}
+	else {
+		sound2.pause()
+		clearInterval(musicInt2)
+	}
 }
 
-//	if (music2 > 1) {
-//		sound2.play()
-//		musicDelay = XXXXX
-//}
-
-//	if (music3 > 1) {
-//		sound3.play()
-//		musicDelay = XXXXX
-//}
-
-//	if (music4 > 1) {
-//		sound4.play()
-//		musicDelay = XXXXX
-//}
-	
-}
 
 function defineTotalSeconds (){
 totalSeconds = (Math.floor((parseInt(handle2.style.left)-85)/4.5))+(60*(Math.floor((parseInt(handle.style.left)-85)/50)))
@@ -952,6 +980,7 @@ playButton.style.zIndex = -1
 function beginGame(){
 	startpageDisappear();
 	game();
+	music1(false)
 }
 ////////
 
@@ -966,11 +995,18 @@ var rounds = document.getElementById("rounds")
 var guessingBackground = document.getElementById("guessingBackground")
 var locations = document.getElementById("locations")
 var photo = document.getElementById("photo")
-hideImageCheck = 0
-timerCheck = 0;
+var container = document.getElementById("container")
+var controls = document.getElementById("controls")
 playerFloor = 0;
 playerAnswer = 0;
-roundScore = 0
+roundScore = 0;
+hideImageCheck = 0
+
+container.style.zIndex = '-1'
+container.style.transition = '0s'
+controls.style.opacity = '0'
+controls.style.transition = '0s'
+
 
 clearOptions();
 
@@ -1029,46 +1065,42 @@ setTimeout(function() {
 
     }
 /////////
-//function timerTick (){
-
-//totalSeconds = totalSeconds-1
-//console.log("ticking")
-//var timer1 = document.getElementById("timer1")
-//timer1.innerText = totalSeconds;
-//}
-
-
-//function startTimer (){
-//defineTotalSeconds();
-//var timer1 = document.getElementById("timer1")
-//timer1.innerText = totalSeconds;
-
-//for (xy = totalSeconds; xy >= 1; xy--) {
-//    setTimeout(timerTick, (1000*xy))
-//    }
-//}
 
 function startTimer(seconds) {
-    let timeLeft = seconds;
 
-    const interval = setInterval(() => {
-        if (timeLeft > 0) {
-        var timer1 = document.getElementById("timer1")
-		timer1.innerText = seconds;
-            timeLeft--;
-        } else {
-            console.log("Time's up!");
+   	submit.addEventListener("click", function() {
+        clearInterval(interval)
+        	console.log("interval3");
+        })
+
+    var timeLeft = seconds;
+
+   	const interval = setInterval(() => {
+
+    	if (timeLeft > 0) {
+       		var timer1 = document.getElementById("timer1")
+			timer1.innerText = timeLeft;
+           
+           timeLeft--;
+           console.log('interval2' + timeLeft)
+        } 
+
+      else{
+            console.log("interval3");
             clearInterval(interval)
-        }
+            console.log(hideImageCheck)
+        var timer1 = document.getElementById("timer1")
+			timer1.innerText = timeLeft;
+		if(hideImageCheck < 1){
+			hideImage()
+			hideImageCheck++
+		}
+      }
     }, 1000);
 }
 
-function checkTimer (){
-	timerCheck = timerCheck+1
-}
-
 function showImage (){
-
+music2(true)
 	var guessing = document.getElementById("guessing")
 	var score = document.getElementById("score")
 	var rounds = document.getElementById("rounds")
@@ -1089,11 +1121,13 @@ function showImage (){
 }
 
 function hideImage (){
-hideImageCheck = hideImageCheck+1
-
+music2(false)
 var photo = document.getElementById("photo")
 photo.style.opacity = 0
 
+timeLeft = 0
+
+console.log('hideImage')
 photos.splice(randomNumber, 1)
 answers.splice(randomNumber, 1)
 floors.splice(randomNumber, 1)
@@ -1105,6 +1139,10 @@ var closeFloorScore = 0
 var exactFloorScore = 0
 var exactRoomScore = 0
 
+if(hideImageCheck < 1){
+	hideImage()
+	hideImageCheck++
+}
 	roundScore=roundScore+50
 
 	if (Math.abs(playerFloor-floor)<2) {
@@ -1148,7 +1186,12 @@ score.innerHTML = "score:<br>"+playerScore
 
 function endScore (){
 
-	var cardHeader = document.getElementById("cardHeader")
+	var header = document.getElementById('header')
+	header.style.opacity = '0'
+	header.style.zIndex = '-1'
+	header.style.transition = '0s'
+
+var cardHeader = document.getElementById("cardHeader")
 cardHeader.style.zIndex = 2
 cardHeader.innerHTML = "final&nbsp;score"
 cardHeader.style.top = "25%"
@@ -1188,21 +1231,9 @@ function noShade(event) {
     box.style.opacity = "0";
 }
 
-function tryToHide(){
-	if(timerCheck > 0){
-	if(hideImageCheck < 1){
-	if (totalSeconds < 1) {
-stopCheck = stopCheck+1
-	hideImage();
-}
-}
-}
-}
 //////
 function game (){
-	 minuteTime =Math.floor((parseInt(handle.style.left)-85)/50)
-	 secondTime =Math.floor((parseInt(handle2.style.left)-85)/4.5)
-	 totalTime = 1000*((secondTime)+(60*(minuteTime)))+3000
+	totalSeconds = (Math.floor((parseInt(handle2.style.left)-85)/4.5))+(60*(Math.floor((parseInt(handle.style.left)-85)/50)))
 
 countdown();
 
@@ -1210,11 +1241,7 @@ trackRounds();
 
 setTimeout(showImage, 3000);
 
-setTimeout(startTimer(totalSeconds), 3000);
-
-setTimeout(checkTimer, 4000)
-
-setInterval(tryToHide, 1)
+setTimeout(() => startTimer(totalSeconds), 2000);
 
 }
 ///////
@@ -1230,6 +1257,8 @@ var countdown = document.getElementById("countdown")
 	countdown.style.left = "0%"
 	countdown.style.borderRadius = "1%"
 	countdown.style.fontSize = "90px"
+	countdown.style.border = 'none'
+
 
 var score = document.getElementById("score")
 score.style.zIndex = "-1"
@@ -1247,8 +1276,6 @@ next.style.zIndex = "-1"
 var restart = document.getElementById("restart")
 restart.style.zIndex = "2"
 
-var header = document.getElementById("header")
-header.style.zIndex = "-1"
 }
 /////////
 function newGame(){
@@ -1257,7 +1284,6 @@ secondTime = 0
 sum = minuteTime+secondTime
 totalSeconds = 0;
 roundsPlayed = 0;
-totalRounds = 1;
 answer = 0;
 isDragging = false;
 offsetX = 0;
@@ -1266,8 +1292,6 @@ offsetX2 = 0;
 controlsSet = 0;
 playerScore = 0;
 playerAnswer = 0;
-hideImageCheck = 0
-timerCheck = 0;
 stopCheck = 0;
 playerFloor = 0;
 playerAnswer = 0;
@@ -1276,7 +1300,7 @@ roundScore = 0
 photos = ["203E.png", "205E.png", "212E.png", "3E.png", "401E.png", "501E.png", "502E.png", "504E.png", "505E.png",  "1101E.png", "1103E.png", "1106E.png", "1204E.png", "1206E.png", "13E.png", "1402E.png", "1403E.png", "1405E.png", "1406E.png", "1407E.png"]
 answers = ["203", "205", "212", "3", "401", "501", "502", "504", "505", "1101", "1103", "1106", "1204", "1206", "13", "1402", "1403", "1405", "1406", "1407"]
 floors = ["2", "2", "2", "3", "4", "5", "5", "5", "5", "11", "11", "11", "12", "12", "13", "14", "14", "14", "14", "14"]
-
+music1(true)
 var restart = document.getElementById("restart")
 restart.style.zIndex = "-1"
 
@@ -1285,6 +1309,7 @@ playButton.style.zIndex = "1"
 
 var controls = document.getElementById("controls")
 controls.style.zIndex = "1"
+controls.style.transition = '0s'
 
 var countdown = document.getElementById("countdown")
 countdown.style.width = "150px"
@@ -1292,24 +1317,27 @@ countdown.style.height = "150px"
 countdown.style.fontSize = "120px"
 countdown.style.top = "40%"
 countdown.style.left = "44%"
-countdown.style.borderRadius = "0%"
+countdown.style.borderRadius = "10%"
 countdown.style.border = "1px solid white"
 countdown.innerText = "1"
 countdown.style.zIndex = "-1"
 
 var header = document.getElementById("header")
-header.style.zIndex = "1"
+header.style.zIndex = "2"
+header.style.opacity = '1'
+header.style.transition = '0s'
 
 var scoreCard = document.getElementById("scoreCard")
 scoreCard.style.zIndex = "-1"
 scoreCard.style.width = "50%"
 scoreCard.style.height = "77.5%"
+scoreCard.style.top = "16.5%"
 
 var cardHeader = document.getElementById("cardHeader")
 cardHeader.style.zIndex = "-1"
 
-var roundIndicator = document.getElementById("roundIndicator")
-roundIndicator.innerText = "1"
+var score = document.getElementById("score")
+score.innerText = "score:"<br>"XXXX"
 
 next.removeEventListener("click", endGame)
 next.addEventListener("click", game)
@@ -1494,8 +1522,9 @@ option5.classList.add("selected")
 if(playerAnswer !== 0){
 submit.addEventListener("click", scoring)}
 
-entrance.addEventListener("mouseover", startShade);
-entrance.addEventListener("mouseout", startNoShade);
+
+entrance.addEventListener("mouseover", startShade)
+entrance.addEventListener("mouseout", startNoShade)
 entrance.addEventListener("click", enterGame);
 restart.addEventListener("click", newGame)
 plus.addEventListener("click", addRound)
